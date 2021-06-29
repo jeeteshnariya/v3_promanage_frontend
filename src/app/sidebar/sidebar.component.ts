@@ -28,7 +28,7 @@ export const ROUTES: RouteInfo[] = [
     class: "",
   },
   {
-    path: "/login",
+    path: "",
     title: "Log out",
     icon: "nc-share-66",
     class: "active-pro",
