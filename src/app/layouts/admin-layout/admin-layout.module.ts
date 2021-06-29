@@ -15,7 +15,9 @@ import { NotificationsComponent } from "../../pages/notifications/notifications.
 import { UpgradeComponent } from "../../pages/upgrade/upgrade.component";
 
 import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
-import { LoginComponent } from "../../pages/login/login.component";
+
+import { ProfilesComponent } from "../../pages/profiles/profiles.component";
+import { ProjectsComponent } from "../../pages/projects/projects.component";
 
 @NgModule({
   imports: [
@@ -27,13 +29,14 @@ import { LoginComponent } from "../../pages/login/login.component";
   declarations: [
     DashboardComponent,
     UserComponent,
-    LoginComponent,
     TableComponent,
     UpgradeComponent,
     TypographyComponent,
     IconsComponent,
     MapsComponent,
     NotificationsComponent,
+    ProfilesComponent,
+    ProjectsComponent,
   ],
 })
 export class AdminLayoutModule {}

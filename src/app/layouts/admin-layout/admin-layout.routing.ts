@@ -9,12 +9,14 @@ import { MapsComponent } from "../../pages/maps/maps.component";
 import { NotificationsComponent } from "../../pages/notifications/notifications.component";
 import { UpgradeComponent } from "../../pages/upgrade/upgrade.component";
 import { LoginComponent } from "../../pages/login/login.component";
-import { UserlistComponent } from "../../pages/userlist/userlist.component";
+import { ProfilesComponent } from "app/pages/profiles/profiles.component";
+import { ProjectsComponent } from "app/pages/projects/projects.component";
 
 export const AdminLayoutRoutes: Routes = [
   { path: "dashboard", component: DashboardComponent },
   { path: "user", component: UserComponent },
-  { path: "userlist", component: UserlistComponent },
+  { path: "profiles", component: ProfilesComponent },
+  { path: "projects", component: ProjectsComponent },
   { path: "login", component: LoginComponent },
   { path: "table", component: TableComponent },
   { path: "typography", component: TypographyComponent },
