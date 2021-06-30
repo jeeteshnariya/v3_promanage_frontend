@@ -1,12 +1,17 @@
 <div class="wrapper">
-  <div class="sidebar" data-color="white" data-active-color="danger">
+  <div
+    class="sidebar"
+    data-color="white"
+    data-active-color="danger"
+    *ngIf="display"
+  >
     <sidebar-cmp></sidebar-cmp>
   </div>
-  <div class="main-panel">
-    <navbar-cmp></navbar-cmp>
+  <div class="main-panel" [ngStyle]="loginStyle">
+    <navbar-cmp *ngIf="display"></navbar-cmp>
     <div class="content">
-      <router-outlet></router-outlet>
+      <router-outlet> </router-outlet>
     </div>
-    <footer-cmp></footer-cmp>
+    <footer-cmp *ngIf="display"></footer-cmp>
   </div>
 </div>

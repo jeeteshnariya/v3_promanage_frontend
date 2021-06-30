@@ -13,11 +13,11 @@ import { ProfilesComponent } from "app/pages/profiles/profiles.component";
 import { ProjectsComponent } from "app/pages/projects/projects.component";
 
 export const AdminLayoutRoutes: Routes = [
+  { path: "", component: LoginComponent },
   { path: "dashboard", component: DashboardComponent },
   { path: "user", component: UserComponent },
   { path: "profiles", component: ProfilesComponent },
   { path: "projects", component: ProjectsComponent },
-  { path: "login", component: LoginComponent },
   { path: "table", component: TableComponent },
   { path: "typography", component: TypographyComponent },
   { path: "icons", component: IconsComponent },

@@ -18,6 +18,7 @@ import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 
 import { ProfilesComponent } from "../../pages/profiles/profiles.component";
 import { ProjectsComponent } from "../../pages/projects/projects.component";
+import { LoginComponent } from "app/pages/login/login.component";
 
 @NgModule({
   imports: [
@@ -37,6 +38,7 @@ import { ProjectsComponent } from "../../pages/projects/projects.component";
     NotificationsComponent,
     ProfilesComponent,
     ProjectsComponent,
+    LoginComponent,
   ],
 })
 export class AdminLayoutModule {}
