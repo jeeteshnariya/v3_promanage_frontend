@@ -15,7 +15,14 @@
                     type="email"
                     class="form-control"
                     placeholder="Email"
+                    name="user.email"
+                    [(ngModel)]="user.email"
                   />
+                  <span *ngIf="message.email"
+                    ><p *ngFor="let item of message.email" style="color: red">
+                      {{ item }}
+                    </p></span
+                  >
                 </div>
               </div>
             </div>
@@ -27,7 +34,14 @@
                     type="password"
                     class="form-control"
                     placeholder="Password"
+                    name="user.password"
+                    [(ngModel)]="user.password"
                   />
+                  <span *ngIf="message.password"
+                    ><p *ngFor="let item of message.email" style="color: red">
+                      {{ item }}
+                    </p></span
+                  >
                 </div>
               </div>
             </div>
@@ -46,6 +60,7 @@
               </div>
             </div>
           </form>
+          <h4>{{ message | json }}</h4>
         </div>
       </div>
     </div>
