@@ -28,4 +28,15 @@ export class ProfilesComponent implements OnInit {
       }
     );
   }
+
+  storeUsers() {
+    // .createUsers()
+  }
+
+  editUsers() {
+    // .updateUser()
+  }
+  removeUsers() {
+    // .deteteUser()
+  }
 }
