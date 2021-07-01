@@ -25,10 +25,10 @@ export class ProjectsService {
   }
 
   updateProject(id, data: any): Observable<any>{
-    return this.http.put<any>(this._url + '/projects' + id, data);
+    return this.http.put<any>(this._url + '/projects/' + id, data);
   }
 
   deleteProject(id): Observable<any>{
-    return this.http.delete<any>(this._url + '/projects' + id);
+    return this.http.delete<any>(this._url + '/projects/' + id);
   }
 }

@@ -38,7 +38,10 @@ export class ProjectsComponent implements OnInit {
   editProjects() {
     
   }
-  removeProjects() {
-    
+  removeProjects(project) {
+    this.projectService.deleteProject(project.id).subscribe((res: any) => {
+      console.log(res);
+      this.fetchProjects();
+    });
   }
 }
