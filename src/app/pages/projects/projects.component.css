@@ -25,3 +25,10 @@
 .Completed {
   background-color: rgb(38, 230, 255);
 }
+.close_btn {
+  padding: 9px;
+  background-color: #fdf5f5;
+  float: right;
+  border-radius: 10px;
+  cursor: pointer;
+}
