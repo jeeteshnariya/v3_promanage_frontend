@@ -1,4 +1,6 @@
 import { Component, OnInit } from "@angular/core";
+import { Router } from "@angular/router";
+import { AuthService } from "app/_services/auth.service";
 
 export interface RouteInfo {
   path: string;
@@ -42,7 +44,25 @@ export const ROUTES: RouteInfo[] = [
 })
 export class SidebarComponent implements OnInit {
   public menuItems: any[];
+  constructor(private authService: AuthService, public router: Router) {}
   ngOnInit() {
     this.menuItems = ROUTES.filter((menuItem) => menuItem);
+  }
+
+  logout(menuItem) {
+    console.log(menuItem);
+    if (menuItem.title == "Log out") {
+      this.authService.logout().subscribe(
+        (resp) => {
+          console.log("Successfully logout");
+
+          console.log(resp);
+          this.router.navigate([""]);
+        },
+        (err) => {
+          console.error("Error logging in", err);
+        }
+      );
+    }
   }
 }

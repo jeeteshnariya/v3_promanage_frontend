@@ -8,7 +8,7 @@ import { AuthService } from "app/_services/auth.service";
   moduleId: module.id,
 })
 export class LoginComponent implements OnInit {
-  constructor(private router: Router, private userService: AuthService) {}
+  constructor(private router: Router, private authService: AuthService) {}
   private user: any = {};
   public message: string = "";
   ngOnInit(): void {}
@@ -20,7 +20,7 @@ export class LoginComponent implements OnInit {
 
   login() {
     this.user.device_name = "web";
-    this.userService.login(this.user).subscribe(
+    this.authService.login(this.user).subscribe(
       (resp) => {
         console.log("Successfully logged in");
 

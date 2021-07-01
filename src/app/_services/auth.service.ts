@@ -24,6 +24,16 @@ export class AuthService {
     );
   }
 
+  logout(): Observable<any> {
+    return this.http.post(this._url + "/logout", {}).pipe(
+      map((resp: any) => {
+        // this._token = resp.token;
+        localStorage.removeItem("token");
+        return resp;
+      })
+    );
+  }
+
   set token(token: string) {
     // this._token = token;
     localStorage.setItem("token", token);
@@ -36,8 +46,5 @@ export class AuthService {
   isLoggedIn() {
     // return this.token != null;
     return localStorage.getItem("token") != null;
-  }
-  logout() {
-    return localStorage.removeItem("token");
   }
 }
