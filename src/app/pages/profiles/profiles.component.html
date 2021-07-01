@@ -1,2 +1,38 @@
-<p>profiles works!</p>
-{{ users | json }}
+<div class="row">
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-header">
+        <h4 class="card-title">Users</h4>
+        <!-- <button class="btn">Add New +</button> -->
+      </div>
+      <div class="card-body">
+        <div class="table-responsive">
+          <table class="table">
+            <thead class="text-primary">
+              <th>Name</th>
+              <th>Country</th>
+              <th>City</th>
+              <th class="text-right">Salary</th>
+            </thead>
+            <tbody>
+              <tr *ngFor="let user of users">
+                <td>
+                  {{ user.name }}
+                  <!-- <b *ngIf="user.profiles">({{ user.profiles.name }})</b> -->
+                  <span class="role">{{ user.roles.slug }} </span> <br />
+                  <small>{{ user.email }}</small>
+                </td>
+                <td>Niger</td>
+                <td>Oud-Turnhout</td>
+                <td class="text-right">$36,738</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<pre>
+  {{ users | json }}
+</pre>

@@ -8,7 +8,7 @@ import { map } from "rxjs/operators";
   providedIn: "root",
 })
 export class AuthService {
-  private _token: string = null;
+  // private _token: string = null;
   private _url: string = "";
   constructor(private http: HttpClient) {
     this._url = environment.baseUrl;
@@ -17,21 +17,27 @@ export class AuthService {
   login(user): Observable<any> {
     return this.http.post(this._url + "/login", user).pipe(
       map((resp: any) => {
-        this._token = resp.token;
+        // this._token = resp.token;
+        localStorage.setItem("token", resp.token);
         return resp;
       })
     );
   }
 
   set token(token: string) {
-    this._token = token;
+    // this._token = token;
+    localStorage.setItem("token", token);
   }
 
   get token() {
-    return this._token;
+    return localStorage.getItem("token");
   }
 
   isLoggedIn() {
-    return this.token != null;
+    // return this.token != null;
+    return localStorage.getItem("token") != null;
+  }
+  logout() {
+    return localStorage.removeItem("token");
   }
 }
