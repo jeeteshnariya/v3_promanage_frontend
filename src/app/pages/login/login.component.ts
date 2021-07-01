@@ -13,11 +13,6 @@ export class LoginComponent implements OnInit {
   public message: string = "";
   ngOnInit(): void {}
 
-  loginx() {
-    console.log("login");
-    this.router.navigate(["/dashboard"]);
-  }
-
   login() {
     this.user.device_name = "web";
     this.authService.login(this.user).subscribe(

@@ -8,7 +8,12 @@
     height: auto;
   }
 }
-
+.logo_login {
+  margin: 0 auto;
+  display: block;
+  width: 55%;
+  margin-bottom: 50px;
+}
 .sidebar,
 .off-canvas-sidebar {
   position: fixed;
@@ -153,7 +158,7 @@
 
   .logo {
     position: relative;
-    padding: 7px $padding-base-horizontal;
+    padding: 7px 2.7rem;
     z-index: 4;
 
     a.logo-mini,

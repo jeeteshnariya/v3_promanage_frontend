@@ -1,6 +1,17 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-4 offset-md-4" style="margin-top: 150px">
+    <div class="col-md-4 offset-md-4" style="margin-top: 100px">
+      <div class="logo">
+        <a class="simple-text logo-normal logo_login">
+          <div class="logo-image-normal">
+            <img src="assets/img/logo.svg" />
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-4 offset-md-4">
       <div class="card card-user" style="background-color: #ffffff">
         <div class="card-header">
           <h5 class="card-title">Login</h5>
@@ -38,7 +49,10 @@
                     [(ngModel)]="user.password"
                   />
                   <span *ngIf="message.password"
-                    ><p *ngFor="let item of message.email" style="color: red">
+                    ><p
+                      *ngFor="let item of message.password"
+                      style="color: red"
+                    >
                       {{ item }}
                     </p></span
                   >
@@ -46,7 +60,7 @@
               </div>
             </div>
             <div class="row">
-              <div class="update ml-auto mr-auto">
+              <div class="col">
                 <button
                   type="button"
                   class="btn btn-primary btn-round"
@@ -54,15 +68,12 @@
                 >
                   Login
                 </button>
-                <button type="submit" class="btn btn-default btn-round">
-                  Cancle
-                </button>
               </div>
             </div>
           </form>
-          <h4>{{ message | json }}</h4>
         </div>
       </div>
     </div>
   </div>
+  <h4>{{ message | json }}</h4>
 </div>
