@@ -15,6 +15,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
 import { AuthInterceptor } from "./_services/auth.interceptor";
 import { AuthService } from "./_services/auth.service";
 import { UsersService } from "./_services/users.service";
+import { ProjectsService } from "./_services/projects.service";
 
 @NgModule({
   declarations: [AppComponent, AdminLayoutComponent],
@@ -32,6 +33,7 @@ import { UsersService } from "./_services/users.service";
   providers: [
     AuthService,
     UsersService,
+    ProjectsService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,

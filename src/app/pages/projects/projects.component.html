@@ -1,2 +1,52 @@
-<p>projects works!</p>
-<h1>Display projects</h1>
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card card-user">
+                <div class="card-body">
+                    <button type="button" class="btn complete btn-sm">Complete</button> 
+                    <i class="fas fa-ellipsis-v float-right"></i>               
+                  <div class="author mt-2">
+                    <a href="#">
+                      <img class="avatar border-gray" src="assets/img/welcomhotel-dwarka.png" alt="...">
+                      <h5 class="title">Hotel Management System</h5>
+                    </a>
+                    <small>
+                        Under Guidence : Mr.J.J.Dave
+                    </small>
+                  </div>
+                  <p class="description text-center">
+                    Technology : Laravel
+                  </p>
+                </div>
+                <div class="card-footer">
+                  <hr>
+                  <div class="button-container">
+                    <div class="row">
+                      <div class="col-lg-4 col-md-6 col-6 ml-auto">
+                        <h5>25
+                          <br>
+                          <small>Tasks</small>
+                        </h5>
+                      </div>
+                      <div class="col-lg-4 col-md-6 col-6 ml-auto mr-auto">
+                        <h5>15
+                          <br>
+                          <small>Completed</small> 
+                        </h5>
+                      </div>
+                      <div class="col-lg-4 col-md-6 col-6 mr-auto">
+                        <h5>10
+                          <br>
+                          <small>Days Left</small>
+                        </h5>
+                      </div>
+                    </div>                   
+                  </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<pre>
+    {{ projects | json }}
+</pre>

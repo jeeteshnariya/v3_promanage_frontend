@@ -1,0 +1,17 @@
+.complete{
+    background-color:rgba(194, 249, 173, 0.799);
+    color:rgb(94, 246, 33);
+    border-color: rgb(94, 246, 33);
+}
+
+.inprogress{
+    background-color:rgba(231, 125, 116, 0.822);
+    color:rgb(246, 47, 33);
+    border-color: rgb(246, 33, 33);
+}
+
+.proimg{
+    height: 60px;
+    width: 60px;
+    border-radius: 50%;
+}
