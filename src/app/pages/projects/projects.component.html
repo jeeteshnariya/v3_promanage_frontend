@@ -1,10 +1,7 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-12">
-      <button class="btn">Add +</button>
-      <button class="btn btn-lg btn-outline-primary" (click)="open()">
-        Launch demo modal
-      </button>
+    <div class="col-md-12 mb-2">
+      <button class="btn" (click)="open({ mode: 'add' })">Add +</button>
     </div>
     <div class="col-md-4" *ngFor="let project of projects">
       <div class="card card-user">
@@ -26,19 +23,25 @@
             ></i>
           </span>
           <div class="author mt-2">
-            <a href="#">
+            <span style="cursor: pointer">
               <img
                 class="avatar border-gray"
                 src="assets/img/welcomhotel-dwarka.png"
                 alt="..."
               />
-              <h5 class="title">{{ project.name }}</h5>
-            </a>
-            <small> {{ project.description }} </small>
+              <h5
+                class="title"
+                (click)="open({ mode: 'edit', project: project })"
+              >
+                {{ project.name }}
+              </h5>
+            </span>
+            <p>{{ project.description }}</p>
           </div>
-          <p class="description text-center">
-            Technology : {{ project.technology }}
+          <p class="text-center">
+            Tech : <b style="color: orange"> #{{ project.technology }}</b>
           </p>
+          <p class="text-center">Start Date : {{ project.start_date }}</p>
         </div>
         <div class="card-footer">
           <hr />
@@ -60,9 +63,7 @@
               </div>
               <div class="col-lg-4 col-md-6 col-6 mr-auto">
                 <h5>
-                  10
-                  <br />
-                  <small>Days Left</small>
+                  {{ moment(project.due_date, "YYYY-MM-DD").fromNow() }} Due
                 </h5>
               </div>
             </div>

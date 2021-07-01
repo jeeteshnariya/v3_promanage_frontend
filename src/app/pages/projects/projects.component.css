@@ -14,7 +14,7 @@
   border-radius: 50%;
 }
 .Pending {
-  background-color: blue;
+  background-color: rgb(206, 17, 17);
 }
 .Active {
   background-color: rgb(255, 179, 0);
@@ -23,7 +23,7 @@
   background-color: rgb(200, 200, 200);
 }
 .Completed {
-  background-color: rgb(38, 230, 255);
+  background-color: rgb(12, 158, 68);
 }
 .close_btn {
   padding: 9px;

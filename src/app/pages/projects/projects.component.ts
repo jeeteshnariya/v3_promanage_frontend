@@ -1,8 +1,13 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, Type } from "@angular/core";
 import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
 import { ProjectsService } from "app/_services/projects.service";
-import { ToastrService } from "ngx-toastr";
+import * as moment from "moment";
 
+import { ToastrService } from "ngx-toastr";
+import { ModalProjectComponent } from "./modal-project/modal-project.component";
+const MODALS: { [name: string]: Type<any> } = {
+  autofocus: ModalProjectComponent,
+};
 @Component({
   selector: "app-projects",
   templateUrl: "./projects.component.html",
@@ -17,6 +22,7 @@ export class ProjectsComponent implements OnInit {
 
   private projects: any = {};
   public message: string = "";
+  moment = moment;
 
   ngOnInit(): void {
     this.fetchProjects();
@@ -36,9 +42,11 @@ export class ProjectsComponent implements OnInit {
     );
   }
 
-  storeProjects() {}
+  open(data) {
+    const modalRef = this.modalService.open(MODALS["autofocus"]);
+    modalRef.componentInstance.data = data;
+  }
 
-  editProjects() {}
   removeProjects(project) {
     this.projectService.deleteProject(project.id).subscribe((res: any) => {
       console.log(res);
@@ -52,7 +60,7 @@ export class ProjectsComponent implements OnInit {
       `<span data-notify="icon" class="nc-icon nc-bell-55"></span><span data-notify="message">${msg}</span>`,
       "",
       {
-        timeOut: 4000,
+        timeOut: 2000,
         closeButton: true,
         enableHtml: true,
         toastClass: "alert alert-success alert-with-icon",
