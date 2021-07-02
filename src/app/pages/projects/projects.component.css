@@ -34,3 +34,6 @@
   border-radius: 10px;
   cursor: pointer;
 }
+._search {
+  background-color: white !important;
+}

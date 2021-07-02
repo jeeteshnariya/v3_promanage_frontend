@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+
 @Component({
   selector: "user-cmp",
   moduleId: module.id,
@@ -10,18 +10,7 @@ export class UserComponent implements OnInit {
   public imagePath;
   imgURL: any;
   public messageImg: string;
-  userForm = this.fb.group({
-    firstName: ["", Validators.required],
-    lastName: [""],
-    address: this.fb.group({
-      street: [""],
-      city: [""],
-      state: [""],
-      zip: [""],
-    }),
-  });
 
-  constructor(private fb: FormBuilder) {}
   ngOnInit() {}
 
   fileSelected(event) {

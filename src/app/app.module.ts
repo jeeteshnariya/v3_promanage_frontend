@@ -17,7 +17,6 @@ import { AuthService } from "./_services/auth.service";
 import { UsersService } from "./_services/users.service";
 import { ProjectsService } from "./_services/projects.service";
 import { ModalProjectComponent } from "./pages/projects/modal-project/modal-project.component";
-import { ReactiveFormsModule } from "@angular/forms";
 
 @NgModule({
   declarations: [AppComponent, AdminLayoutComponent, ModalProjectComponent],
@@ -31,7 +30,6 @@ import { ReactiveFormsModule } from "@angular/forms";
     ToastrModule.forRoot(),
     FooterModule,
     HttpClientModule,
-    ReactiveFormsModule,
   ],
   providers: [
     AuthService,

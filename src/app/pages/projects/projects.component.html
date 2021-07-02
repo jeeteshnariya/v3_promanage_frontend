@@ -1,7 +1,28 @@
 <div class="container">
   <div class="row">
     <div class="col-md-12 mb-2">
-      <button class="btn" (click)="open({ mode: 'add' })">Add +</button>
+      <nav class="pull-left">
+        <button class="btn" (click)="open({ mode: 'add', project: {} })">
+          Add +
+        </button>
+      </nav>
+      <div class="pull-right">
+        <form>
+          <div class="input-group no-borde _searchr">
+            <input
+              type="text"
+              value=""
+              class="form-control _search"
+              placeholder="Search..."
+            />
+            <div class="input-group-append _search">
+              <div class="input-group-text">
+                <i class="nc-icon nc-zoom-split"></i>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
     </div>
     <div class="col-md-4" *ngFor="let project of projects">
       <div class="card card-user">
@@ -23,7 +44,10 @@
             ></i>
           </span>
           <div class="author mt-2">
-            <span style="cursor: pointer">
+            <span
+              style="cursor: pointer"
+              (click)="open({ mode: 'edit', project: project })"
+            >
               <img
                 class="avatar border-gray proimg"
                 src="https://ui-avatars.com/api/?background=random&size=80&name={{
@@ -31,10 +55,7 @@
                 }}"
                 alt="..."
               />
-              <h5
-                class="title"
-                (click)="open({ mode: 'edit', project: project })"
-              >
+              <h5 class="title">
                 {{ project.name }}
               </h5>
               <span *ngIf="project.users as user">
@@ -82,6 +103,4 @@
     </div>
   </div>
 </div>
-<pre>
-    {{ projects | json }}
-</pre>
+<!-- <pre>{{ projects | json }}</pre> -->
