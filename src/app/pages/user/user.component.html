@@ -1,324 +1,226 @@
-<div class="row">
-  <div class="col-md-4">
-    <div class="card card-user">
-      <div class="image">
-        <img src="assets/img/damir-bosnjak.jpg" alt="..." />
-      </div>
-      <div class="card-body" style="min-height: 0px">
-        <div class="author">
-          <a href="#">
-            <img
-              class="avatar border-gray"
-              src="assets/img/mike.jpg"
-              alt="..."
-              *ngIf="!imgURL"
-            />
-            <img
-              class="avatar border-gray"
-              [src]="imgURL"
-              alt=""
-              *ngIf="imgURL"
-            />
-            <p *ngIf="messageImg" style="color: red">{{ messageImg }}</p>
-            <h5 class="title">Chet Faker</h5>
-          </a>
-          <p class="description">@chetfaker</p>
+<div class="container">
+  <div class="row">
+    <div class="col-md-9 offset-md-1">
+      <div class="card card-user">
+        <div class="image">
+          <img src="assets/img/damir-bosnjak.jpg" alt="..." />
         </div>
-      </div>
-      <div class="card-footer">
-        <hr />
-        <div class="button-container">
-          <div class="row">
-            <div class="col-lg-3 col-md-6 col-6 ml-auto">
-              <h5>
-                12
-                <br />
-                <small>Files</small>
-              </h5>
-            </div>
-            <div class="col-lg-4 col-md-6 col-6 ml-auto mr-auto">
-              <h5>
-                2GB
-                <br />
-                <small>Used</small>
-              </h5>
-            </div>
-            <div class="col-lg-3 mr-auto">
-              <h5>
-                24,6$
-                <br />
-                <small>Spent</small>
-              </h5>
-            </div>
+        <div class="card-body" style="min-height: 0px">
+          <div class="author">
+            <a href="#">
+              <img
+                class="avatar border-gray"
+                src="assets/img/mike.jpg"
+                alt="..."
+                *ngIf="!imgURL"
+              />
+              <img
+                class="avatar border-gray"
+                [src]="imgURL"
+                alt=""
+                *ngIf="imgURL"
+              />
+            </a>
           </div>
         </div>
-      </div>
-    </div>
-    <div class="card">
-      <div class="card-header">
-        <h4 class="card-title">Team Members</h4>
-      </div>
-      <div class="card-body">
-        <pre></pre>
-        <ul class="list-unstyled team-members">
-          <li>
-            <div class="row">
-              <div class="col-md-2 col-2">
-                <div class="avatar">
-                  <img
-                    src="assets/img/faces/ayo-ogunseinde-2.jpg"
-                    alt="Circle Image"
-                    class="img-circle img-no-padding img-responsive"
-                  />
-                </div>
-              </div>
-              <div class="col-md-7 col-7">
-                DJ Khaled
-                <br />
-                <span class="text-muted">
-                  <small>Offline</small>
-                </span>
-              </div>
-              <div class="col-md-3 col-3 text-right">
-                <button
-                  class="btn btn-sm btn-outline-success btn-round btn-icon"
-                >
-                  <i class="fa fa-envelope"></i>
-                </button>
-              </div>
-            </div>
-          </li>
-          <li>
-            <div class="row">
-              <div class="col-md-2 col-2">
-                <div class="avatar">
-                  <img
-                    src="assets/img/faces/joe-gardner-2.jpg"
-                    alt="Circle Image"
-                    class="img-circle img-no-padding img-responsive"
-                  />
-                </div>
-              </div>
-              <div class="col-md-7 col-7">
-                Creative Tim
-                <br />
-                <span class="text-success">
-                  <small>Available</small>
-                </span>
-              </div>
-              <div class="col-md-3 col-3 text-right">
-                <button
-                  class="btn btn-sm btn-outline-success btn-round btn-icon"
-                >
-                  <i class="fa fa-envelope"></i>
-                </button>
-              </div>
-            </div>
-          </li>
-          <li>
-            <div class="row">
-              <div class="col-md-2 col-2">
-                <div class="avatar">
-                  <img
-                    src="assets/img/faces/clem-onojeghuo-2.jpg"
-                    alt="Circle Image"
-                    class="img-circle img-no-padding img-responsive"
-                  />
-                </div>
-              </div>
-              <div class="col-ms-7 col-7">
-                Flume
-                <br />
-                <span class="text-danger">
-                  <small>Busy</small>
-                </span>
-              </div>
-              <div class="col-md-3 col-3 text-right">
-                <button
-                  class="btn btn-sm btn-outline-success btn-round btn-icon"
-                >
-                  <i class="fa fa-envelope"></i>
-                </button>
-              </div>
-            </div>
-          </li>
-        </ul>
       </div>
     </div>
   </div>
-  <div class="col-md-8">
-    <div class="card card-user">
-      <div class="card-header">
-        <h5 class="card-title">Edit Profile</h5>
-      </div>
-      <div class="card-body">
-        <form [formGroup]="usersForm" (ngSubmit)="login()">
-          <div class="container">
-            <div class="row">
-              <div class="col-md-6 pr-1">
-                <div class="form-group">
-                  <label>Username</label>
-                  <input
-                    type="text"
-                    class="form-control"
-                    placeholder="Username"
-                    formControlName="name"
-                  />
+
+  <div class="row">
+    <div class="col-md-9 offset-md-1">
+      <div class="card card-user">
+        <div class="card-header">
+          <h5 class="card-title" *ngIf="userId">Edit Profile</h5>
+          <h5 class="card-title" *ngIf="!userId">Create Profile</h5>
+        </div>
+        <div class="card-body">
+          <form [formGroup]="usersForm">
+            <div class="container">
+              <div class="row">
+                <div class="col-md-6 pr-1">
+                  <div class="form-group">
+                    <label>Full Name</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      placeholder="Full Name"
+                      formControlName="name"
+                    />
+                  </div>
                 </div>
-              </div>
-              <div class="col-md-6 pl-1">
-                <div class="form-group">
-                  <label for="exampleInputEmail1">Email address</label>
-                  <input
-                    type="email"
-                    class="form-control"
-                    placeholder="Email"
-                    formControlName="email"
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="container" formGroupName="profiles">
-            <div class="row">
-              <div class="col-md-6 pr-1">
-                <div class="form-group">
-                  <label>Full Name</label>
-                  <input
-                    type="text"
-                    class="form-control"
-                    placeholder="Full Name"
-                    formControlName="name"
-                  />
-                </div>
-              </div>
-              <div class="col-md-6 pl-1">
-                <div class="form-group">
-                  <label>Phone Number</label>
-                  <input
-                    type="text"
-                    class="form-control"
-                    placeholder="Phone Number"
-                    formControlName="phone"
-                  />
+                <div class="col-md-6 pl-1">
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Email address</label>
+                    <input
+                      type="email"
+                      class="form-control"
+                      placeholder="Email"
+                      formControlName="email"
+                    />
+                  </div>
                 </div>
               </div>
             </div>
-            <div class="row">
-              <div class="col-md-4 pr-1">
-                <div class="form-group">
-                  <label>College Name</label>
-                  <input
-                    type="text"
-                    class="form-control"
-                    placeholder="College Name"
-                    formControlName="college_name"
-                  />
+            <div class="container" formGroupName="profiles">
+              <div class="row">
+                <div class="col-md-6 pr-1">
+                  <div class="form-group">
+                    <label>Phone Number</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      placeholder="Phone Number"
+                      formControlName="phone"
+                    />
+                  </div>
                 </div>
               </div>
-              <div class="col-md-4 px-1">
-                <div class="form-group">
-                  <label>Course</label>
-                  <input
-                    type="text"
-                    class="form-control"
-                    placeholder="Course"
-                    value="Computer Science"
-                    formControlName="course"
-                  />
+              <div class="row">
+                <div class="col-md-4 pr-1">
+                  <div class="form-group">
+                    <label>College Name</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      placeholder="College Name"
+                      formControlName="college_name"
+                    />
+                  </div>
+                </div>
+
+                <div class="col-md-4 px-1">
+                  <div class="form-group">
+                    <label>Qualification</label>
+
+                    <select
+                      class="custom-select mr-sm-2"
+                      id="inlineFormCustomSelect"
+                      formControlName="qualification"
+                    >
+                      <option selected>Choose...</option>
+                      <option value="MCA">M.C.A</option>
+                      <option value="MscIT">M.Sc (IT & CA)</option>
+                      <option value="BscIT">B.Sc (IT & CA)</option>
+                      <option value="BCA">B.C.A</option>
+                      <option value="CS">C.S</option>
+                    </select>
+                  </div>
                 </div>
               </div>
-              <div class="col-md-4 pl-1">
-                <div class="form-group">
-                  <label>Qualification</label>
-                  <input
-                    type="number"
-                    class="form-control"
-                    placeholder="Qualification"
-                    formControlName="qualification"
-                  />
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="form-check form-check-inline">
+                    <input
+                      class="form-check-input"
+                      type="radio"
+                      name="inlineRadioOptions"
+                      formControlName="gender"
+                      id="inlineRadio1"
+                      value="Male"
+                    />
+                    <label for="inlineRadio1">Male</label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input
+                      class="form-check-input"
+                      type="radio"
+                      name="inlineRadioOptions"
+                      formControlName="gender"
+                      id="inlineRadio2"
+                      value="Female"
+                    />
+                    <label for="inlineRadio2">Female</label>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label>Address</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      placeholder="Home Address"
+                      formControlName="address"
+                    />
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-4 pr-1">
+                  <div class="form-group">
+                    <label>Semester</label>
+
+                    <select
+                      class="custom-select mr-sm-2"
+                      id="inlineFormCustomSelect"
+                      formControlName="semester"
+                    >
+                      <option selected>Choose...</option>
+                      <option value="1">One</option>
+                      <option value="2">Two</option>
+                      <option value="3">Three</option>
+                      <option value="4">Four</option>
+                      <option value="5">Five</option>
+                      <option value="6">Six</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="col-md-4 px-1">
+                  <div class="form-group">
+                    <label>Status</label>
+                    <select
+                      class="custom-select mr-sm-2"
+                      id="inlineFormCustomSelect"
+                      formControlName="status"
+                    >
+                      <option selected>Choose...</option>
+                      <option value="Active">Active</option>
+                      <option value="Locked">Locked</option>
+                      <option value="Archive">Archive</option>
+                    </select>
+                  </div>
                 </div>
               </div>
             </div>
+
             <div class="row">
               <div class="col-md-12">
-                <div class="form-group">
-                  <label>Address</label>
-                  <input
-                    type="text"
-                    class="form-control"
-                    placeholder="Home Address"
-                    formControlName="address"
-                  />
+                <div class="input-group mb-3">
+                  <div class="custom-file">
+                    <input type="file" class="custom-file-input" id="propic" />
+                    <label class="custom-file-label" for="propic"
+                      >Upload Profile Picture</label
+                    >
+                  </div>
+                  <p *ngIf="messageImg" style="color: red">{{ messageImg }}</p>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="input-group mb-3">
+                  <div class="custom-file">
+                    <input
+                      type="file"
+                      class="custom-file-input"
+                      id="coverpic"
+                    />
+                    <label class="custom-file-label" for="coverpic"
+                      >Upload Cover Photo</label
+                    >
+                  </div>
                 </div>
               </div>
             </div>
             <div class="row">
-              <div class="col-md-4 pr-1">
-                <div class="form-group">
-                  <label>Semester</label>
-                  <input
-                    type="text"
-                    class="form-control"
-                    placeholder="Semester"
-                    formControlName="semester"
-                  />
-                </div>
-              </div>
-              <div class="col-md-4 px-1">
-                <div class="form-group">
-                  <label>Status</label>
-                  <input
-                    type="text"
-                    class="form-control"
-                    placeholder="Stutus"
-                    formControlName="status"
-                  />
-                </div>
-              </div>
-              <div class="col-md-4 pl-1">
-                <div class="form-group">
-                  <label>Postal Code</label>
-                  <input
-                    type="number"
-                    class="form-control"
-                    placeholder="361001"
-                  />
-                </div>
+              <div class="update ml-auto mr-auto">
+                <button (click)="onSubmit()" class="btn btn-primary btn-round">
+                  Save User
+                </button>
               </div>
             </div>
-          </div>
-
-          <div class="row">
-            <div class="col-md-12">
-              <div class="input-group mb-3">
-                <div class="custom-file">
-                  <input type="file" class="custom-file-input" id="propic" />
-                  <label class="custom-file-label" for="propic"
-                    >Upload Profile Picture</label
-                  >
-                </div>
-              </div>
-            </div>
-            <div class="col-md-12">
-              <div class="input-group mb-3">
-                <div class="custom-file">
-                  <input type="file" class="custom-file-input" id="coverpic" />
-                  <label class="custom-file-label" for="coverpic"
-                    >Upload Cover Photo</label
-                  >
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="update ml-auto mr-auto">
-              <button type="submit" class="btn btn-primary btn-round">
-                Update Profile
-              </button>
-            </div>
-          </div>
-        </form>
+          </form>
+        </div>
       </div>
     </div>
   </div>

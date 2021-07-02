@@ -1,6 +1,7 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { environment } from "environments/environment";
+
 import { Observable } from "rxjs";
 
 @Injectable({
@@ -17,11 +18,19 @@ export class UsersService {
     return this.http.get<any[]>(this._url + "/users");
   }
 
-  getUser(code: string): Observable<any> {
-    return this.http.get<any>(this._url + "/users/" + code);
+  getUser(id: string): Observable<any> {
+    return this.http.get<any>(this._url + "/users/" + id);
   }
 
-  createUser(stock: any): Observable<any> {
-    return this.http.post(this._url + "/users", stock);
+  createUsers(data: any): Observable<any> {
+    return this.http.post(this._url + "/users", data);
+  }
+
+  updateUsers(id, data: any): Observable<any> {
+    return this.http.put<any>(this._url + "/users/" + id, data);
+  }
+
+  deleteUsers(id): Observable<any> {
+    return this.http.delete<any>(this._url + "/users/" + id);
   }
 }

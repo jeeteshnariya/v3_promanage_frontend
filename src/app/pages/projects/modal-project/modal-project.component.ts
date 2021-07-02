@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup } from "@angular/forms";
 
 import { NgbActiveModal } from "@ng-bootstrap/ng-bootstrap";
 import { ProjectsService } from "app/_services/projects.service";
+import { TosterService } from "app/_services/toster.service";
 
 @Component({
   selector: "app-modal-project",
@@ -18,7 +19,8 @@ export class ModalProjectComponent implements OnInit {
   constructor(
     public activeModal: NgbActiveModal,
     private fb: FormBuilder,
-    private projectService: ProjectsService
+    private projectService: ProjectsService,
+    private tost: TosterService
   ) {}
 
   ngOnInit(): void {
@@ -55,7 +57,7 @@ export class ModalProjectComponent implements OnInit {
     this.projectService.createProject(this.projectForm.value).subscribe(
       (resp: any) => {
         console.log(resp);
-        this.projectService.displayMsg(resp.message);
+        this.tost.success(resp.message);
         this.activeModal.close("Ok click");
       },
       (err) => {
@@ -70,7 +72,7 @@ export class ModalProjectComponent implements OnInit {
     this.projectService.updateProject(id, this.projectForm.value).subscribe(
       (resp: any) => {
         console.log(resp);
-        this.projectService.displayMsg(resp.message);
+        this.tost.info(resp.message);
         this.activeModal.close("Ok click");
       },
       (err) => {

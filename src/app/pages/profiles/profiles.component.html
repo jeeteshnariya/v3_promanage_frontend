@@ -42,10 +42,11 @@
               <th>Name</th>
               <th>Address</th>
               <th>Semester</th>
-              <th>Course</th>
+
               <th>College</th>
               <th>Qualification</th>
               <th>Status</th>
+
               <th class="text-right">Actions</th>
             </thead>
             <tbody>
@@ -75,8 +76,7 @@
                   </p>
                 </td>
                 <td>{{ _d(user, "name") }} <br />{{ _d(user, "address") }}</td>
-                <td>{{ _d(user, "semester") }}</td>
-                <td>{{ _d(user, "course") }}</td>
+                <td>Sem - {{ _d(user, "semester") }}</td>
                 <td>{{ _d(user, "college_name") }}</td>
                 <!-- <td>{{ _d(user, "technology") }}</td> -->
                 <td>{{ _d(user, "qualification") }}</td>
@@ -92,7 +92,11 @@
                   >
                     Edit
                   </button>
-                  <button type="button" class="btn btn-outline-danger btn-sm">
+                  <button
+                    type="button"
+                    class="btn btn-outline-danger btn-sm"
+                    (click)="removeUsers(user.id)"
+                  >
                     Delete
                   </button>
                 </td>
@@ -105,5 +109,5 @@
   </div>
 </div>
 <pre>
-  {{ users | json }}
+  <!-- {{ users | json }} -->
 </pre>

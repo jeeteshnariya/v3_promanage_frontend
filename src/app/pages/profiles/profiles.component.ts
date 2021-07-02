@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import { TosterService } from "app/_services/toster.service";
 import { UsersService } from "app/_services/users.service";
 
 @Component({
@@ -9,7 +10,7 @@ import { UsersService } from "app/_services/users.service";
 export class ProfilesComponent implements OnInit {
   private users: any = null;
   public message: string = "";
-  constructor(private userService: UsersService) {}
+  constructor(private userService: UsersService, private tost: TosterService) {}
 
   ngOnInit(): void {
     this.fetchUsers();
@@ -29,15 +30,17 @@ export class ProfilesComponent implements OnInit {
     );
   }
 
-  storeUsers() {
-    // .createUsers()
-  }
-
-  editUsers() {
-    // .updateUser()
-  }
-  removeUsers() {
-    // .deteteUser()
+  removeUsers(id) {
+    this.userService.deleteUsers(id).subscribe(
+      (res: any) => {
+        console.log(res);
+        this.fetchUsers();
+        this.tost.error(res.message);
+      },
+      (err: any) => {
+        console.log(err);
+      }
+    );
   }
 
   _d(ev, typ) {

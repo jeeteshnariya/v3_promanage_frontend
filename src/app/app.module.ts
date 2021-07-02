@@ -18,6 +18,7 @@ import { UsersService } from "./_services/users.service";
 import { ProjectsService } from "./_services/projects.service";
 import { ModalProjectComponent } from "./pages/projects/modal-project/modal-project.component";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { TosterService } from "./_services/toster.service";
 
 @NgModule({
   declarations: [AppComponent, AdminLayoutComponent, ModalProjectComponent],
@@ -38,6 +39,7 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
     AuthService,
     UsersService,
     ProjectsService,
+    TosterService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,

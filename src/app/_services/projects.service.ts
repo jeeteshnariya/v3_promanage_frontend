@@ -1,7 +1,7 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { environment } from "environments/environment";
-import { ToastrService } from "ngx-toastr";
+
 import { Observable } from "rxjs";
 
 @Injectable({
@@ -9,7 +9,8 @@ import { Observable } from "rxjs";
 })
 export class ProjectsService {
   private _url: string = "";
-  constructor(private http: HttpClient, private toastr: ToastrService) {
+
+  constructor(private http: HttpClient) {
     this._url = environment.baseUrl;
   }
 
@@ -36,18 +37,4 @@ export class ProjectsService {
   // resetForm(): void {
   //   this.projectForm.reset();
   // }
-
-  displayMsg(msg) {
-    this.toastr.success(
-      `<span data-notify="icon" class="nc-icon nc-bell-55"></span><span data-notify="message">${msg}</span>`,
-      "",
-      {
-        timeOut: 2000,
-        closeButton: true,
-        enableHtml: true,
-        toastClass: "alert alert-success alert-with-icon",
-        positionClass: "toast-" + "top" + "-" + "right",
-      }
-    );
-  }
 }

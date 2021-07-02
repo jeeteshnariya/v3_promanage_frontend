@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup } from "@angular/forms";
 import { ActivatedRoute, Router } from "@angular/router";
+import { TosterService } from "app/_services/toster.service";
 import { UsersService } from "app/_services/users.service";
 
 @Component({
@@ -21,7 +22,8 @@ export class UserComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private userSvc: UsersService,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private tost: TosterService
   ) {}
   ngOnInit() {
     this.initForm();
@@ -40,6 +42,40 @@ export class UserComponent implements OnInit {
     });
   }
 
+  onSubmit() {
+    if (this.userId) {
+      this.updateUserProfile();
+    } else {
+      this.createUserProfile();
+    }
+  }
+
+  createUserProfile() {
+    this.userSvc.createUsers(this.usersForm.value).subscribe(
+      (res: any) => {
+        console.log(res);
+        this.tost.success(res.message);
+        this.router.navigate(["/profiles"]);
+      },
+      (err: any) => {
+        console.log(err);
+      }
+    );
+  }
+
+  updateUserProfile() {
+    this.userSvc.updateUsers(this.userId, this.usersForm.value).subscribe(
+      (res: any) => {
+        console.log(res);
+        this.tost.info(res.message);
+        this.router.navigate(["/profiles"]);
+      },
+      (err: any) => {
+        console.log(err);
+      }
+    );
+  }
+
   initForm(): void {
     this.usersForm = this.fb.group({
       email: "",
@@ -47,15 +83,13 @@ export class UserComponent implements OnInit {
       profiles: this.fb.group({
         address: "",
         avtar: "",
-        college_name: "",
-        course: "",
+        college_name: "Vidhiya Sagar",
         cover: "",
-        gender: "",
-        name: "",
+        gender: "Male",
         phone: "",
-        qualification: "",
-        semester: "",
-        status: "",
+        qualification: "MscIT",
+        semester: 1,
+        status: "Active",
       }),
     });
   }
