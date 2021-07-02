@@ -21,12 +21,6 @@ export const ROUTES: RouteInfo[] = [
   { path: "/user", title: "User Profile", icon: "nc-single-02", class: "" },
   { path: "/profiles", title: "Profiles", icon: "nc-bag-16", class: "" },
   { path: "/projects", title: "Projects", icon: "nc-app", class: "" },
-  {
-    path: "/login",
-    title: "Log in",
-    icon: "nc-share-66",
-    class: "active-pro",
-  },
 ];
 
 @Component({
@@ -41,20 +35,17 @@ export class SidebarComponent implements OnInit {
     this.menuItems = ROUTES.filter((menuItem) => menuItem);
   }
 
-  logout(menuItem) {
-    console.log(menuItem);
-    if (menuItem.title == "Log out") {
-      this.authService.logout().subscribe(
-        (resp) => {
-          console.log("Successfully logout");
+  logout() {
+    this.authService.logout().subscribe(
+      (resp) => {
+        console.log("Successfully logout");
 
-          console.log(resp);
-          this.router.navigate([""]);
-        },
-        (err) => {
-          console.error("Error logging in", err);
-        }
-      );
-    }
+        console.log(resp);
+        this.router.navigate(["/login"]);
+      },
+      (err) => {
+        console.error("Error logging in", err);
+      }
+    );
   }
 }

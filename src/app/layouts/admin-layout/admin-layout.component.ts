@@ -23,7 +23,7 @@ export class AdminLayoutComponent implements OnInit {
   }
 
   setStyle() {
-    if (this.getTitle() == "Log in") {
+    if (this.getTitle() == "/login") {
       this.display = false;
       this.loginStyle = { width: "100%", height: "100vh" };
     } else {
@@ -44,7 +44,7 @@ export class AdminLayoutComponent implements OnInit {
       }
     }
 
-    return "login";
+    return "/login";
   }
 
   ngDoCheck() {

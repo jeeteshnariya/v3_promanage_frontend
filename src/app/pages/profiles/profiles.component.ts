@@ -7,7 +7,7 @@ import { UsersService } from "app/_services/users.service";
   styleUrls: ["./profiles.component.css"],
 })
 export class ProfilesComponent implements OnInit {
-  private users: any = {};
+  private users: any = null;
   public message: string = "";
   constructor(private userService: UsersService) {}
 
