@@ -10,7 +10,7 @@ import { AuthService } from "app/_services/auth.service";
 })
 export class LoginComponent implements OnInit {
   private usersForm: FormGroup;
-  public message: string = null;
+  public message: any = null;
 
   constructor(
     private router: Router,

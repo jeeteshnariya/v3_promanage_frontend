@@ -13,6 +13,7 @@ export class ModalProjectComponent implements OnInit {
   @Input() data;
   public mode: any = null;
   private projectForm: FormGroup;
+  public message: any = null;
 
   constructor(
     public activeModal: NgbActiveModal,
@@ -29,20 +30,42 @@ export class ModalProjectComponent implements OnInit {
   initForm(): void {
     this.projectForm = this.fb.group({
       id: "",
-      name: "PRoject Name",
+      name: "New Application",
       start_date: "",
       due_date: "",
       description: "",
-      status: "Completed",
+      technology: "",
+      status: "Open",
       users: this.fb.group({
-        name: "username",
-        email: "user@rmail.com",
+        name: "@username",
+        email: "ex@domain.name",
       }),
     });
   }
 
+  onSubmit() {
+    if (this.mode === "add") {
+      this.saveProject();
+    } else {
+      this.updateProject();
+    }
+  }
+
   saveProject() {
-    console.log(this.projectForm.value);
+    this.projectService.createProject(this.projectForm.value).subscribe(
+      (resp: any) => {
+        console.log(resp);
+        this.projectService.displayMsg(resp.message);
+        this.activeModal.close("Ok click");
+      },
+      (err) => {
+        console.error("Error logging in", err);
+        this.message = err.error.errors;
+      }
+    );
+  }
+
+  updateProject() {
     var id = this.data.project.id;
     this.projectService.updateProject(id, this.projectForm.value).subscribe(
       (resp: any) => {
@@ -52,6 +75,7 @@ export class ModalProjectComponent implements OnInit {
       },
       (err) => {
         console.error("Error logging in", err);
+        this.message = err.error.errors;
       }
     );
   }
