@@ -16,8 +16,8 @@
 
 */
 
-@import 'paper-dashboard/variables';
-@import 'paper-dashboard/mixins';
+@import "paper-dashboard/variables";
+@import "paper-dashboard/mixins";
 
 // Plugins CSS
 @import "paper-dashboard/plugins/plugin-animate-bootstrap-notify";
@@ -29,7 +29,6 @@
 @import "paper-dashboard/typography";
 @import "paper-dashboard/misc";
 @import "paper-dashboard/checkboxes-radio";
-
 
 // components
 @import "paper-dashboard/navbar";
@@ -59,3 +58,62 @@
 @import "paper-dashboard/angular/fixed-plugin";
 
 @import "paper-dashboard/responsive";
+
+.Complete {
+  background-color: #eefbe9cc;
+}
+
+.inprogress {
+  background-color: rgba(231, 125, 116, 0.822);
+  color: rgb(246, 47, 33);
+  border-color: rgb(246, 33, 33);
+}
+.title:hover {
+  color: orange;
+}
+.proimg {
+  height: 75px;
+  width: 75px;
+  border-radius: 100%;
+}
+.Pending {
+  background-color: rgb(206, 17, 17);
+}
+.Active {
+  background-color: rgb(255, 179, 0);
+}
+.Archive {
+  background-color: rgb(200, 200, 200);
+}
+.Completed {
+  background-color: rgb(12, 158, 68);
+}
+.close_btn {
+  padding: 9px;
+  background-color: #fdf5f5;
+  float: right;
+  border-radius: 10px;
+  cursor: pointer;
+  margin-top: 6px;
+}
+.edit_btn {
+  padding: 9px;
+  background-color: #e0ffe4;
+  float: right;
+  border-radius: 10px;
+  cursor: pointer;
+  margin-top: 6px;
+  margin-right: 10px;
+}
+._search {
+  background-color: white !important;
+}
+._hr_bt {
+  position: relative;
+  bottom: -22px;
+}
+
+._hr_cn {
+  position: relative;
+  top: -35px;
+}

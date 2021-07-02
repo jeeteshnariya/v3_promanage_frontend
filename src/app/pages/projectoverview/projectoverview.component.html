@@ -1,0 +1,92 @@
+<div class="container">
+  <div class="card">
+    <div class="row">
+      <div class="col-md-12" *ngIf="project">
+        <div class="card-user">
+          <div class="card-body">
+            <div class="row">
+              <div class="col-md-3">
+                <div class="d-flex h-100">
+                  <span class="justify-content-center align-self-center">
+                    <img
+                      class="avatar border-gray proimg ml-5"
+                      src="https://ui-avatars.com/api/?background=random&size=80&name={{
+                        project.name
+                      }}"
+                    />
+                  </span>
+                </div>
+              </div>
+              <div class="col-md-9">
+                <h2 class="title mt-4">
+                  {{ project.name }}
+                </h2>
+                <p>{{ project.description }}</p>
+                <button
+                  type="button"
+                  class="btn complete btn-sm"
+                  [class]="project.status"
+                >
+                  {{ project.status }}
+                </button>
+                <p class="text-left">
+                  From
+                  {{ moment(project.start_date, "YYYY-MM-DD").format("ll") }}
+                  to end
+                  {{ moment(project.due_date, "YYYY-MM-DD").format("ll") }}
+                </p>
+                <span *ngIf="project.users as user">
+                  Student
+                  <span style="font-weight: bold; color: #333"
+                    >@{{ user.name }}</span
+                  >
+                  <span class="ml-5 mr-5">
+                    Tech :
+                    <b style="color: orange"> #{{ project.technology }}</b>
+                  </span>
+                  <span class="ml-4"> ({{ user.email }})</span>
+                  <br />
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <hr class="_hr_bt" />
+    <div class="container _hr_cn">
+      <div class="row">
+        <div class="col-md-12">
+          <ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-tabs">
+            <li [ngbNavItem]="1">
+              <a ngbNavLink>Tasks</a>
+              <ng-template ngbNavContent>
+                <p>
+                  Raw denim you probably haven't heard of them jean shorts
+                  Austin. Nesciunt tofu stumptown aliqua, retro synth master
+                  cleanse.
+                </p>
+              </ng-template>
+            </li>
+            <li [ngbNavItem]="2">
+              <a ngbNavLink>Uploads</a>
+              <ng-template ngbNavContent>
+                <p>
+                  Exercitation +1 labore velit, blog sartorial PBR leggings next
+                  level wes anderson artisan four loko farm-to-table craft beer
+                  twee. Qui photo booth letterpress, commodo enim craft beer
+                  tumblr butcher vero sint qui sapiente accusamus tattooed echo
+                  park.
+                </p>
+              </ng-template>
+            </li>
+          </ul>
+
+          <div [ngbNavOutlet]="nav" class="mt-2"></div>
+
+          <pre>Active: {{ active }}</pre>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

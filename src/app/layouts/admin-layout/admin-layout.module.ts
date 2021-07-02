@@ -16,6 +16,7 @@ import { ProfilesComponent } from "../../pages/profiles/profiles.component";
 import { ProjectsComponent } from "../../pages/projects/projects.component";
 import { LoginComponent } from "app/pages/login/login.component";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { ProjectoverviewComponent } from '../../pages/projectoverview/projectoverview.component';
 
 @NgModule({
   imports: [
@@ -33,6 +34,7 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
     ProfilesComponent,
     ProjectsComponent,
     LoginComponent,
+    ProjectoverviewComponent,
   ],
   // exports: [ReactiveFormsModule],
 })
