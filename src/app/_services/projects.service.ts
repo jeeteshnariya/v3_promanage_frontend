@@ -18,12 +18,12 @@ export class ProjectsService {
     return this.http.get<any[]>(this._url + "/projects");
   }
 
-  getProject(code: string): Observable<any> {
-    return this.http.get<any>(this._url + "/projects/" + code);
+  getProject(id: any): Observable<any> {
+    return this.http.get<any>(this._url + "/projects/" + id);
   }
 
-  createProject(stock: any): Observable<any> {
-    return this.http.post(this._url + "/projects", stock);
+  createProject(data: any): Observable<any> {
+    return this.http.post(this._url + "/projects", data);
   }
 
   updateProject(id, data: any): Observable<any> {

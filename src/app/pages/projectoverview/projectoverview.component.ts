@@ -1,7 +1,9 @@
 import { Component, OnInit } from "@angular/core";
-import { FormBuilder } from "@angular/forms";
+import { FormBuilder, FormGroup } from "@angular/forms";
 import { ActivatedRoute, Router } from "@angular/router";
+import { FilesService } from "app/_services/files.service";
 import { ProjectsService } from "app/_services/projects.service";
+import { TasksService } from "app/_services/tasks.service";
 import { TosterService } from "app/_services/toster.service";
 import * as moment from "moment";
 
@@ -13,13 +15,20 @@ import * as moment from "moment";
 export class ProjectoverviewComponent implements OnInit {
   public projectId: string = null;
   public project: any = null;
+  public tasks: any = null;
   active = 1;
+  private taskId: number = null;
+
+  private taskForm: FormGroup;
+
   constructor(
     private route: ActivatedRoute,
     private router: Router,
     private projectService: ProjectsService,
     private fb: FormBuilder,
-    private tost: TosterService
+    private tost: TosterService,
+    private taskService: TasksService,
+    private fileService: FilesService
   ) {}
   moment = moment;
   ngOnInit() {
@@ -30,6 +39,7 @@ export class ProjectoverviewComponent implements OnInit {
     console.log(this.projectId);
     if (this.projectId) {
       this.fetchUserById();
+      this.fetchTaskOfProject();
     }
   }
 
@@ -39,7 +49,75 @@ export class ProjectoverviewComponent implements OnInit {
       this.project = res.projects[0];
     });
   }
+
+  fetchTaskOfProject() {
+    this.taskService.getTasksByProjectId(this.projectId).subscribe(
+      (res: any) => {
+        // console.log(res);
+        this.tasks = res.tasks;
+      },
+      (err: any) => {
+        console.log(err);
+      }
+    );
+  }
+  removeTask(id) {
+    this.taskService.deleteTask(id).subscribe((res: any) => {
+      console.log(res);
+      this.fetchTaskOfProject();
+      this.tost.error(res.message);
+      this.initForm();
+    });
+  }
   initForm() {
-    return null;
+    this.taskForm = this.fb.group({
+      title: "",
+      status: "Open",
+      priority: "Low",
+    });
+    this.taskId = null;
+  }
+
+  setTask(task) {
+    this.taskForm.patchValue(task);
+    this.taskId = task.id;
+  }
+  saveTask() {
+    if (this.taskId) {
+      this.updateTask(this.taskId);
+    } else {
+      this.addTask();
+    }
+  }
+
+  updateTask(taskId) {
+    var data = this.taskForm.value;
+    data.project_id = parseInt(this.projectId);
+    this.taskService.updateTask(taskId, data).subscribe(
+      (res: any) => {
+        // console.log(res);
+        this.tost.success(res.message);
+        this.fetchTaskOfProject();
+        this.initForm();
+      },
+      (err: any) => {
+        console.log(err);
+      }
+    );
+  }
+  addTask() {
+    var data = this.taskForm.value;
+    data.project_id = parseInt(this.projectId);
+    this.taskService.createTask(data).subscribe(
+      (res: any) => {
+        // console.log(res);
+        this.tost.success(res.message);
+        this.fetchTaskOfProject();
+        this.initForm();
+      },
+      (err: any) => {
+        console.log(err);
+      }
+    );
   }
 }
