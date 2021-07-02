@@ -7,11 +7,13 @@
   color: rgb(246, 47, 33);
   border-color: rgb(246, 33, 33);
 }
-
+.title:hover {
+  color: orange;
+}
 .proimg {
-  height: 60px;
-  width: 60px;
-  border-radius: 50%;
+  height: 75px;
+  width: 75px;
+  border-radius: 100%;
 }
 .Pending {
   background-color: rgb(206, 17, 17);

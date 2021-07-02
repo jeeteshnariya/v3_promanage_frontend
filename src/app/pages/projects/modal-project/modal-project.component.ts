@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from "@angular/core";
-import { NgbActiveModal } from "@ng-bootstrap/ng-bootstrap";
+import { NgbActiveModal, NgbDateStruct } from "@ng-bootstrap/ng-bootstrap";
 
+const states = ["Open", "Active", "Pending", "Completed", "Archive"];
 @Component({
   selector: "app-modal-project",
   templateUrl: "./modal-project.component.html",
@@ -10,6 +11,7 @@ export class ModalProjectComponent implements OnInit {
   @Input() data;
   public mode: any = null;
   public project: any = null;
+  duedate: NgbDateStruct;
 
   constructor(public activeModal: NgbActiveModal) {}
 

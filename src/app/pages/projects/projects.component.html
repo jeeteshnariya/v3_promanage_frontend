@@ -25,8 +25,10 @@
           <div class="author mt-2">
             <span style="cursor: pointer">
               <img
-                class="avatar border-gray"
-                src="assets/img/welcomhotel-dwarka.png"
+                class="avatar border-gray proimg"
+                src="https://ui-avatars.com/api/?background=random&size=80&name={{
+                  project.name
+                }}"
                 alt="..."
               />
               <h5
@@ -35,13 +37,25 @@
               >
                 {{ project.name }}
               </h5>
+              <span *ngIf="project.users as user">
+                User
+                <span style="font-weight: bold; color: #333"
+                  >@{{ user.name }}</span
+                >
+                <br />
+              </span>
             </span>
             <p>{{ project.description }}</p>
           </div>
           <p class="text-center">
             Tech : <b style="color: orange"> #{{ project.technology }}</b>
           </p>
-          <p class="text-center">Start Date : {{ project.start_date }}</p>
+          <p class="text-center">
+            From
+            {{ moment(project.start_date, "YYYY-MM-DD").format("ll") }}
+            to end
+            {{ moment(project.due_date, "YYYY-MM-DD").format("ll") }}
+          </p>
         </div>
         <div class="card-footer">
           <hr />
@@ -59,11 +73,6 @@
                   15
                   <br />
                   <small>Completed</small>
-                </h5>
-              </div>
-              <div class="col-lg-4 col-md-6 col-6 mr-auto">
-                <h5>
-                  {{ moment(project.due_date, "YYYY-MM-DD").fromNow() }} Due
                 </h5>
               </div>
             </div>
