@@ -32,9 +32,9 @@
         <li class="nav-item">
           <a class="nav-link btn-rotate" href="javascript:void(0)">
             <p style="text-transform: capitalize">
-              Welcome, {{ userName }}
+              Welcome, {{ userName || "User" }}
               <span class="badge badge-pill badge-secondary mt-2">{{
-                userRole
+                userRole || "Role"
               }}</span>
             </p>
           </a>
@@ -52,7 +52,9 @@
             aria-labelledby="navbarDropdownMenuLink"
             class="dropdown-menu dropdown-menu-right"
           >
-            <a ngbDropdownItem href="javascript:void(0)">{{ userEmail }}</a>
+            <a ngbDropdownItem href="javascript:void(0)">{{
+              userEmail || "exmp@domain.com"
+            }}</a>
             <a ngbDropdownItem href="javascript:void(0)" (click)="logout()"
               >Log Out</a
             >
