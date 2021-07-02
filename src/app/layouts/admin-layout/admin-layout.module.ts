@@ -16,7 +16,8 @@ import { ProfilesComponent } from "../../pages/profiles/profiles.component";
 import { ProjectsComponent } from "../../pages/projects/projects.component";
 import { LoginComponent } from "app/pages/login/login.component";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
-import { ProjectoverviewComponent } from '../../pages/projectoverview/projectoverview.component';
+import { ProjectoverviewComponent } from "../../pages/projectoverview/projectoverview.component";
+import { AngularFileUploaderModule } from "angular-file-uploader";
 
 @NgModule({
   imports: [
@@ -25,6 +26,7 @@ import { ProjectoverviewComponent } from '../../pages/projectoverview/projectove
     NgbModule,
     FormsModule,
     ReactiveFormsModule,
+    AngularFileUploaderModule,
   ],
   declarations: [
     DashboardComponent,

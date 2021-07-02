@@ -185,32 +185,11 @@
                     </tbody>
                   </table>
                 </div>
-                <form>
-                  <div class="form-row">
-                    <div class="form-group col-md-4">
-                      <label>Upload Files</label>
-                      <div class="custom-file">
-                        <input
-                          type="file"
-                          class="custom-file-input"
-                          name="upfile"
-                          id="upfile"
-                        />
-                        <label
-                          class="custom-file-label"
-                          for="avtar"
-                          aria-describedby="inputGroupFileAddon02"
-                          >Choose File</label
-                        >
-                      </div>
-                    </div>
-                    <div class="form-group col-md-2">
-                      <button type="submit" class="btn btn-outline-primary">
-                        Upload
-                      </button>
-                    </div>
-                  </div>
-                </form>
+                <angular-file-uploader
+                  [config]="afuConfig"
+                  (ApiResponse)="fileUpload($event)"
+                >
+                </angular-file-uploader>
               </ng-template>
             </li>
           </ul>
