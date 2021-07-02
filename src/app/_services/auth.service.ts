@@ -19,6 +19,7 @@ export class AuthService {
       map((resp: any) => {
         // this._token = resp.token;
         localStorage.setItem("token", resp.token);
+        localStorage.setItem("user", JSON.stringify(resp.user));
         return resp;
       })
     );
@@ -29,6 +30,8 @@ export class AuthService {
       map((resp: any) => {
         // this._token = resp.token;
         localStorage.removeItem("token");
+        localStorage.removeItem("user");
+
         return resp;
       })
     );
@@ -41,6 +44,11 @@ export class AuthService {
 
   get token() {
     return localStorage.getItem("token");
+  }
+
+  get user() {
+    var user = JSON.parse(localStorage.getItem("user"));
+    return user;
   }
 
   isLoggedIn() {
