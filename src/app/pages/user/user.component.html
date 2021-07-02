@@ -4,7 +4,7 @@
       <div class="image">
         <img src="assets/img/damir-bosnjak.jpg" alt="..." />
       </div>
-      <div class="card-body">
+      <div class="card-body" style="min-height: 0px">
         <div class="author">
           <a href="#">
             <img
@@ -23,30 +23,6 @@
             <h5 class="title">Chet Faker</h5>
           </a>
           <p class="description">@chetfaker</p>
-        </div>
-        <p class="description text-center">
-          "I like the way you work it
-          <br />
-          No diggity <br />
-          I wanna bag it up"
-        </p>
-
-        <div class="row">
-          <div class="col-md-12">
-            <form>
-              <div class="custom-file">
-                <input
-                  type="file"
-                  class="custom-file-input"
-                  id="avatar"
-                  (change)="fileSelected($event)"
-                />
-                <label class="custom-file-label" for="customFile"
-                  >Upload Profile</label
-                >
-              </div>
-            </form>
-          </div>
         </div>
       </div>
       <div class="card-footer">
@@ -178,30 +154,17 @@
       <div class="card-body">
         <form>
           <div class="row">
-            <div class="col-md-5 pr-1">
-              <div class="form-group">
-                <label>Company (disabled)</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  disabled=""
-                  placeholder="Company"
-                  value="Creative Code Inc."
-                />
-              </div>
-            </div>
-            <div class="col-md-3 px-1">
+            <div class="col-md-6 pr-1">
               <div class="form-group">
                 <label>Username</label>
                 <input
                   type="text"
                   class="form-control"
                   placeholder="Username"
-                  value="michael23"
                 />
               </div>
             </div>
-            <div class="col-md-4 pl-1">
+            <div class="col-md-6 pl-1">
               <div class="form-group">
                 <label for="exampleInputEmail1">Email address</label>
                 <input type="email" class="form-control" placeholder="Email" />
@@ -211,23 +174,54 @@
           <div class="row">
             <div class="col-md-6 pr-1">
               <div class="form-group">
-                <label>First Name</label>
+                <label>Full Name</label>
                 <input
                   type="text"
                   class="form-control"
-                  placeholder="Company"
-                  value="Chet"
+                  placeholder="Full Name"
                 />
               </div>
             </div>
             <div class="col-md-6 pl-1">
               <div class="form-group">
-                <label>Last Name</label>
+                <label>Phone Number</label>
                 <input
                   type="text"
                   class="form-control"
-                  placeholder="Last Name"
-                  value="Faker"
+                  placeholder="Phone Number"
+                />
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-4 pr-1">
+              <div class="form-group">
+                <label>College Name</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="College Name"
+                />
+              </div>
+            </div>
+            <div class="col-md-4 px-1">
+              <div class="form-group">
+                <label>Course</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Course"
+                  value="Computer Science"
+                />
+              </div>
+            </div>
+            <div class="col-md-4 pl-1">
+              <div class="form-group">
+                <label>Qualification</label>
+                <input
+                  type="number"
+                  class="form-control"
+                  placeholder="Qualification"
                 />
               </div>
             </div>
@@ -253,7 +247,7 @@
                   type="text"
                   class="form-control"
                   placeholder="City"
-                  value="Melbourne"
+                  value="Jamnagar"
                 />
               </div>
             </div>
@@ -264,7 +258,7 @@
                   type="text"
                   class="form-control"
                   placeholder="Country"
-                  value="Australia"
+                  value="India"
                 />
               </div>
             </div>
@@ -274,18 +268,30 @@
                 <input
                   type="number"
                   class="form-control"
-                  placeholder="ZIP Code"
+                  placeholder="361001"
                 />
               </div>
             </div>
           </div>
           <div class="row">
             <div class="col-md-12">
-              <div class="form-group">
-                <label>About Me</label>
-                <textarea class="form-control textarea">
-Oh so, your weak rhyme You doubt I'll bother, reading into it</textarea
-                >
+              <div class="input-group mb-3">
+                <div class="custom-file">
+                  <input type="file" class="custom-file-input" id="propic" />
+                  <label class="custom-file-label" for="propic"
+                    >Upload Profile Picture</label
+                  >
+                </div>
+              </div>
+            </div>
+            <div class="col-md-12">
+              <div class="input-group mb-3">
+                <div class="custom-file">
+                  <input type="file" class="custom-file-input" id="coverpic" />
+                  <label class="custom-file-label" for="coverpic"
+                    >Upload Cover Photo</label
+                  >
+                </div>
               </div>
             </div>
           </div>

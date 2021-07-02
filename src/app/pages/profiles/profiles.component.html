@@ -2,7 +2,36 @@
   <div class="col-md-12">
     <div class="card">
       <div class="card-header">
-        <h4 class="card-title">Users</h4>
+        <div class="row">
+          <div class="col-md-12 mb-2">
+            <nav class="pull-left">
+              <span class="h4 card-title mr-3">Users</span>
+              <button
+                class="btn btn-outline-secondary btn-sm"
+                [routerLink]="['/user']"
+              >
+                Add +
+              </button>
+            </nav>
+            <div class="pull-right">
+              <form>
+                <div class="input-group no-borde _searchr">
+                  <input
+                    type="text"
+                    value=""
+                    class="form-control _search"
+                    placeholder="Search..."
+                  />
+                  <div class="input-group-append _search">
+                    <div class="input-group-text">
+                      <i class="nc-icon nc-zoom-split"></i>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
         <!-- <button class="btn">Add New +</button> -->
       </div>
       <div class="card-body">
@@ -12,11 +41,10 @@
               <th>#</th>
               <th>Name</th>
               <th>Address</th>
-              <th>semester</th>
-              <th>course</th>
-              <th>college_name</th>
-              <th>technology</th>
-              <th>qualification</th>
+              <th>Semester</th>
+              <th>Course</th>
+              <th>College</th>
+              <th>Qualification</th>
               <th>Status</th>
               <th class="text-right">Actions</th>
             </thead>
@@ -50,7 +78,7 @@
                 <td>{{ _d(user, "semester") }}</td>
                 <td>{{ _d(user, "course") }}</td>
                 <td>{{ _d(user, "college_name") }}</td>
-                <td>{{ _d(user, "technology") }}</td>
+                <!-- <td>{{ _d(user, "technology") }}</td> -->
                 <td>{{ _d(user, "qualification") }}</td>
                 <td>{{ _d(user, "status") }}</td>
 

@@ -1,4 +1,6 @@
 import { Component, OnInit } from "@angular/core";
+import { ActivatedRoute, Router } from "@angular/router";
+import { UsersService } from "app/_services/users.service";
 
 @Component({
   selector: "user-cmp",
@@ -10,8 +12,24 @@ export class UserComponent implements OnInit {
   public imagePath;
   imgURL: any;
   public messageImg: string;
+  public userId: string = "";
 
-  ngOnInit() {}
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    private userSvc: UsersService
+  ) {}
+  ngOnInit() {
+    this.route.queryParams.subscribe((params) => {
+      this.userId = params["id"];
+    });
+    console.log(this.userId);
+    this.fetchUserById();
+  }
+
+  fetchUserById() {
+    this.userSvc.getUser(this.userId).subscribe((res: any) => console.log);
+  }
 
   fileSelected(event) {
     this.messageImg = null;
