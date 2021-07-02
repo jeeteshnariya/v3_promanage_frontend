@@ -39,4 +39,12 @@ export class ProfilesComponent implements OnInit {
   removeUsers() {
     // .deteteUser()
   }
+
+  _d(ev, typ) {
+    if (ev.profiles) {
+      return ev.profiles[typ];
+    } else {
+      return "NaN";
+    }
+  }
 }

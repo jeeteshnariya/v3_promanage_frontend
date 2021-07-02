@@ -1,9 +1,5 @@
-.role {
-  text-transform: uppercase;
-  font-size: 10px;
-  font-weight: 500;
-  background: #f9efe385;
-  padding: 4px 6px;
-  border-radius: 16px;
-  color: #714c09;
+.proimg {
+  height: 45px;
+  width: 45px;
+  border-radius: 100%;
 }

@@ -19,7 +19,7 @@ export const ROUTES: RouteInfo[] = [
     class: "",
   },
   { path: "/user", title: "User Profile", icon: "nc-single-02", class: "" },
-  { path: "/profiles", title: "Profiles", icon: "nc-bag-16", class: "" },
+  { path: "/profiles", title: "Users", icon: "nc-bag-16", class: "" },
   { path: "/projects", title: "Projects", icon: "nc-app", class: "" },
 ];
 

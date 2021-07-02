@@ -9,22 +9,65 @@
         <div class="table-responsive">
           <table class="table">
             <thead class="text-primary">
+              <th>#</th>
               <th>Name</th>
-              <th>Country</th>
-              <th>City</th>
-              <th class="text-right">Salary</th>
+              <th>Address</th>
+              <th>semester</th>
+              <th>course</th>
+              <th>college_name</th>
+              <th>technology</th>
+              <th>qualification</th>
+              <th>Status</th>
+              <th class="text-right">Actions</th>
             </thead>
             <tbody>
               <tr *ngFor="let user of users">
+                <td width="60px">
+                  <img
+                    class="avatar border-gray proimg"
+                    src="https://ui-avatars.com/api/?background=random&size=50&name={{
+                      user.name
+                    }}"
+                  />
+                </td>
                 <td>
                   {{ user.name }}
-                  <!-- <b *ngIf="user.profiles">({{ user.profiles.name }})</b> -->
-                  <span class="role">{{ user.roles.slug }} </span> <br />
-                  <small>{{ user.email }}</small>
+                  <span
+                    class="badge badge-pill badge-info ml-2"
+                    style="text-transform: uppercase"
+                    >{{ user.roles.slug }}</span
+                  >
+                  <br />
+                  <p>
+                    {{ user.email }} <br />
+                    Mo. {{ _d(user, "phone") }}
+                    <span class="badge badge-pill badge-light"
+                      >({{ _d(user, "gender") }})</span
+                    >
+                  </p>
                 </td>
-                <td>Niger</td>
-                <td>Oud-Turnhout</td>
-                <td class="text-right">$36,738</td>
+                <td>{{ _d(user, "name") }} <br />{{ _d(user, "address") }}</td>
+                <td>{{ _d(user, "semester") }}</td>
+                <td>{{ _d(user, "course") }}</td>
+                <td>{{ _d(user, "college_name") }}</td>
+                <td>{{ _d(user, "technology") }}</td>
+                <td>{{ _d(user, "qualification") }}</td>
+                <td>{{ _d(user, "status") }}</td>
+
+                <td class="text-right">
+                  <button
+                    type="button"
+                    class="btn btn-outline-info btn-sm mr-1"
+                    [routerLink]="['/user']"
+                    [queryParams]="{ id: user.id }"
+                    routerLinkActive="router-link-active"
+                  >
+                    Edit
+                  </button>
+                  <button type="button" class="btn btn-outline-danger btn-sm">
+                    Delete
+                  </button>
+                </td>
               </tr>
             </tbody>
           </table>
