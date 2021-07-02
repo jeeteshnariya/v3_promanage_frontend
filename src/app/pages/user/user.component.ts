@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import { FormBuilder, FormGroup } from "@angular/forms";
 import { ActivatedRoute, Router } from "@angular/router";
 import { UsersService } from "app/_services/users.service";
 
@@ -14,21 +15,49 @@ export class UserComponent implements OnInit {
   public messageImg: string;
   public userId: string = "";
 
+  private usersForm: FormGroup;
+
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private userSvc: UsersService
+    private userSvc: UsersService,
+    private fb: FormBuilder
   ) {}
   ngOnInit() {
+    this.initForm();
     this.route.queryParams.subscribe((params) => {
       this.userId = params["id"];
     });
     console.log(this.userId);
-    this.fetchUserById();
+    if (this.userId) {
+      this.fetchUserById();
+    }
   }
 
   fetchUserById() {
-    this.userSvc.getUser(this.userId).subscribe((res: any) => console.log);
+    this.userSvc.getUser(this.userId).subscribe((res: any) => {
+      this.usersForm.patchValue(res.users[0]);
+    });
+  }
+
+  initForm(): void {
+    this.usersForm = this.fb.group({
+      email: "",
+      name: "",
+      profiles: this.fb.group({
+        address: "",
+        avtar: "",
+        college_name: "",
+        course: "",
+        cover: "",
+        gender: "",
+        name: "",
+        phone: "",
+        qualification: "",
+        semester: "",
+        status: "",
+      }),
+    });
   }
 
   fileSelected(event) {
