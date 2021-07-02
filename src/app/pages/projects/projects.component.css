@@ -33,6 +33,16 @@
   float: right;
   border-radius: 10px;
   cursor: pointer;
+  margin-top: 6px;
+}
+.edit_btn {
+  padding: 9px;
+  background-color: #e0ffe4;
+  float: right;
+  border-radius: 10px;
+  cursor: pointer;
+  margin-top: 6px;
+  margin-right: 10px;
 }
 ._search {
   background-color: white !important;
