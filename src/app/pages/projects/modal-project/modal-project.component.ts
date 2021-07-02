@@ -12,7 +12,7 @@ import { ProjectsService } from "app/_services/projects.service";
 export class ModalProjectComponent implements OnInit {
   @Input() data;
   public mode: any = null;
-  public projectForm: FormGroup;
+  private projectForm: FormGroup;
 
   constructor(
     public activeModal: NgbActiveModal,

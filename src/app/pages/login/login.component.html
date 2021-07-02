@@ -17,7 +17,7 @@
           <h5 class="card-title">Login</h5>
         </div>
         <div class="card-body">
-          <form [formGroup]="userForm">
+          <form [formGroup]="usersForm" (ngSubmit)="login()">
             <div class="row">
               <div class="col-md-12">
                 <div class="form-group">
@@ -28,11 +28,11 @@
                     placeholder="Email"
                     formControlName="email"
                   />
-                  <span *ngIf="message.email"
+                  <!-- <span *ngIf="message.email"
                     ><p *ngFor="let item of message.email" style="color: red">
                       {{ item }}
                     </p></span
-                  >
+                  > -->
                 </div>
               </div>
             </div>
@@ -46,24 +46,20 @@
                     placeholder="Password"
                     formControlName="password"
                   />
-                  <span *ngIf="message.password"
+                  <!-- <span *ngIf="message.password"
                     ><p
                       *ngFor="let item of message.password"
                       style="color: red"
                     >
                       {{ item }}
                     </p></span
-                  >
+                  > -->
                 </div>
               </div>
             </div>
             <div class="row">
               <div class="col">
-                <button
-                  type="button"
-                  class="btn btn-primary btn-round"
-                  (click)="login()"
-                >
+                <button type="submit" class="btn btn-primary btn-round">
                   Login
                 </button>
               </div>

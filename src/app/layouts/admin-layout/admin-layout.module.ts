@@ -15,9 +15,16 @@ import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 import { ProfilesComponent } from "../../pages/profiles/profiles.component";
 import { ProjectsComponent } from "../../pages/projects/projects.component";
 import { LoginComponent } from "app/pages/login/login.component";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 
 @NgModule({
-  imports: [CommonModule, RouterModule.forChild(AdminLayoutRoutes), NgbModule],
+  imports: [
+    CommonModule,
+    RouterModule.forChild(AdminLayoutRoutes),
+    NgbModule,
+    FormsModule,
+    ReactiveFormsModule,
+  ],
   declarations: [
     DashboardComponent,
     UserComponent,
@@ -27,5 +34,6 @@ import { LoginComponent } from "app/pages/login/login.component";
     ProjectsComponent,
     LoginComponent,
   ],
+  // exports: [ReactiveFormsModule],
 })
 export class AdminLayoutModule {}

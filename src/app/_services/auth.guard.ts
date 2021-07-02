@@ -32,7 +32,7 @@ export class AuthGuard implements CanActivate {
     console.log("AuthGuard#canActivate not authorized to access page");
     // Can store current route and redirect back to it
     // Store it in a service, add it to a query param
-    this.router.navigate([""]);
+    this.router.navigate(["/login"]);
 
     return false;
   }

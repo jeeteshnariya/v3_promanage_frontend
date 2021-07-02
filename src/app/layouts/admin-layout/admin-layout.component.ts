@@ -23,7 +23,7 @@ export class AdminLayoutComponent implements OnInit {
   }
 
   setStyle() {
-    if (this.getTitle() == "Log out") {
+    if (this.getTitle() == "Log in") {
       this.display = false;
       this.loginStyle = { width: "100%", height: "100vh" };
     } else {

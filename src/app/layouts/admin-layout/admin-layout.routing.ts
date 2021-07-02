@@ -11,13 +11,13 @@ import { ProjectsComponent } from "app/pages/projects/projects.component";
 import { AuthGuard } from "app/_services/auth.guard";
 
 export const AdminLayoutRoutes: Routes = [
-  // { path: "", redirectTo: "/login", pathMatch: "full" },
-  { path: "", component: LoginComponent },
+  { path: "", redirectTo: "/login", pathMatch: "full" },
   {
     path: "dashboard",
     component: DashboardComponent,
     canActivate: [AuthGuard],
   },
+  { path: "login", component: LoginComponent },
   { path: "user", component: UserComponent },
   { path: "profiles", component: ProfilesComponent },
   { path: "projects", component: ProjectsComponent },

@@ -22,8 +22,8 @@ export const ROUTES: RouteInfo[] = [
   { path: "/profiles", title: "Profiles", icon: "nc-bag-16", class: "" },
   { path: "/projects", title: "Projects", icon: "nc-app", class: "" },
   {
-    path: "",
-    title: "Log out",
+    path: "/login",
+    title: "Log in",
     icon: "nc-share-66",
     class: "active-pro",
   },

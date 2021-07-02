@@ -9,7 +9,7 @@ import { AuthService } from "app/_services/auth.service";
   moduleId: module.id,
 })
 export class LoginComponent implements OnInit {
-  public userForm: FormGroup;
+  private usersForm: FormGroup;
   public message: string = null;
 
   constructor(
@@ -23,9 +23,9 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-    console.log(this.userForm);
+    console.log(this.usersForm);
 
-    this.authService.login(this.userForm.value).subscribe(
+    this.authService.login(this.usersForm.value).subscribe(
       (resp) => {
         console.log("Successfully logged in");
 
@@ -40,7 +40,7 @@ export class LoginComponent implements OnInit {
   }
 
   initForm(): void {
-    this.userForm = this.fb.group({
+    this.usersForm = this.fb.group({
       email: "Rubye_Jones99@hotmail.com",
       password: "",
       device_name: "web",
