@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import { FormBuilder, FormGroup } from "@angular/forms";
 import { Router } from "@angular/router";
 import { AuthService } from "app/_services/auth.service";
 
@@ -8,14 +9,23 @@ import { AuthService } from "app/_services/auth.service";
   moduleId: module.id,
 })
 export class LoginComponent implements OnInit {
-  constructor(private router: Router, private authService: AuthService) {}
-  private user: any = {};
-  public message: string = "";
-  ngOnInit(): void {}
+  public userForm: FormGroup;
+  public message: string = null;
+
+  constructor(
+    private router: Router,
+    private authService: AuthService,
+    private fb: FormBuilder
+  ) {}
+
+  ngOnInit(): void {
+    this.initForm();
+  }
 
   login() {
-    this.user.device_name = "web";
-    this.authService.login(this.user).subscribe(
+    console.log(this.userForm);
+
+    this.authService.login(this.userForm.value).subscribe(
       (resp) => {
         console.log("Successfully logged in");
 
@@ -27,5 +37,13 @@ export class LoginComponent implements OnInit {
         this.message = err.error.errors;
       }
     );
+  }
+
+  initForm(): void {
+    this.userForm = this.fb.group({
+      email: "Rubye_Jones99@hotmail.com",
+      password: "",
+      device_name: "web",
+    });
   }
 }

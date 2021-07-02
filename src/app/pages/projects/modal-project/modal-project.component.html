@@ -11,8 +11,8 @@
   </button>
 </div>
 <div class="modal-body">
-  <form>
-    <div class="row" *ngIf="project.users as user">
+  <form [formGroup]="projectForm">
+    <div class="row" formGroupName="users">
       <div class="col-md-6 pr-1">
         <div class="form-group">
           <label>Username</label>
@@ -21,7 +21,7 @@
             class="form-control"
             disabled=""
             placeholder="Username"
-            [value]="user.name"
+            formControlName="name"
           />
         </div>
       </div>
@@ -33,7 +33,7 @@
             disabled=""
             class="form-control"
             placeholder="Email"
-            [value]="user.email"
+            formControlName="email"
           />
         </div>
       </div>
@@ -47,7 +47,7 @@
             type="text"
             class="form-control"
             placeholder="Project Name"
-            [value]="project.name"
+            formControlName="name"
           />
         </div>
       </div>
@@ -60,7 +60,7 @@
             type="date"
             class="form-control"
             placeholder="Company"
-            [value]="project.start_date"
+            formControlName="start_date"
           />
         </div>
       </div>
@@ -71,7 +71,7 @@
             type="date"
             class="form-control"
             placeholder="Last Name"
-            [value]="project.due_date"
+            formControlName="due_date"
           />
         </div>
       </div>
@@ -81,7 +81,7 @@
         <div class="form-group">
           <label>Status</label>
 
-          <select class="form-control" [value]="project.status">
+          <select class="form-control" formControlName="status">
             <option>Open</option>
             <option>Active</option>
             <option>Completed</option>
@@ -95,14 +95,16 @@
       <div class="col-md-12">
         <div class="form-group">
           <label>Description</label>
-          <textarea class="form-control textarea">{{
-            project.description
-          }}</textarea>
+          <textarea
+            class="form-control textarea"
+            formControlName="description"
+            >{{ description }}</textarea
+          >
         </div>
       </div>
     </div>
   </form>
-  <!-- <pre>{{ project | json }}</pre> -->
+  <pre>{{ project | json }}</pre>
 </div>
 
 <div class="modal-footer">

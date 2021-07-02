@@ -3,7 +3,6 @@ import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
 import { ProjectsService } from "app/_services/projects.service";
 import * as moment from "moment";
 
-import { ToastrService } from "ngx-toastr";
 import { ModalProjectComponent } from "./modal-project/modal-project.component";
 const MODALS: { [name: string]: Type<any> } = {
   autofocus: ModalProjectComponent,
@@ -16,11 +15,10 @@ const MODALS: { [name: string]: Type<any> } = {
 export class ProjectsComponent implements OnInit {
   constructor(
     private projectService: ProjectsService,
-    private modalService: NgbModal,
-    private toastr: ToastrService
+    private modalService: NgbModal
   ) {}
 
-  private projects: any = {};
+  public projects: any = null;
   public message: string = "";
   moment = moment;
 
@@ -31,8 +29,7 @@ export class ProjectsComponent implements OnInit {
   fetchProjects() {
     this.projectService.getProjects().subscribe(
       (resp: any) => {
-        console.log("Successfully logged in");
-        // console.log(resp.users);
+        console.log(resp);
         this.projects = resp.projects;
       },
       (err) => {
@@ -45,27 +42,21 @@ export class ProjectsComponent implements OnInit {
   open(data) {
     const modalRef = this.modalService.open(MODALS["autofocus"]);
     modalRef.componentInstance.data = data;
+    modalRef.result
+      .then((result) => {
+        console.log(result);
+        this.fetchProjects();
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }
 
   removeProjects(project) {
     this.projectService.deleteProject(project.id).subscribe((res: any) => {
       console.log(res);
       this.fetchProjects();
-      this.displayMsg("Record Delete Successfully", "top", "right");
+      this.projectService.displayMsg("Record Delete Successfully");
     });
-  }
-
-  displayMsg(msg, from, align) {
-    this.toastr.success(
-      `<span data-notify="icon" class="nc-icon nc-bell-55"></span><span data-notify="message">${msg}</span>`,
-      "",
-      {
-        timeOut: 2000,
-        closeButton: true,
-        enableHtml: true,
-        toastClass: "alert alert-success alert-with-icon",
-        positionClass: "toast-" + from + "-" + align,
-      }
-    );
   }
 }

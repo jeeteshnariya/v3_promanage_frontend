@@ -1,7 +1,6 @@
 import { NgModule } from "@angular/core";
 import { RouterModule } from "@angular/router";
 import { CommonModule } from "@angular/common";
-import { FormsModule } from "@angular/forms";
 
 import { AdminLayoutRoutes } from "./admin-layout.routing";
 
@@ -18,12 +17,7 @@ import { ProjectsComponent } from "../../pages/projects/projects.component";
 import { LoginComponent } from "app/pages/login/login.component";
 
 @NgModule({
-  imports: [
-    CommonModule,
-    RouterModule.forChild(AdminLayoutRoutes),
-    FormsModule,
-    NgbModule,
-  ],
+  imports: [CommonModule, RouterModule.forChild(AdminLayoutRoutes), NgbModule],
   declarations: [
     DashboardComponent,
     UserComponent,

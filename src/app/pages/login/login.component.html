@@ -17,17 +17,16 @@
           <h5 class="card-title">Login</h5>
         </div>
         <div class="card-body">
-          <form>
+          <form [formGroup]="userForm">
             <div class="row">
               <div class="col-md-12">
                 <div class="form-group">
-                  <label for="exampleInputEmail1">Email address</label>
+                  <label>Email address</label>
                   <input
                     type="email"
                     class="form-control"
                     placeholder="Email"
-                    name="user.email"
-                    [(ngModel)]="user.email"
+                    formControlName="email"
                   />
                   <span *ngIf="message.email"
                     ><p *ngFor="let item of message.email" style="color: red">
@@ -40,13 +39,12 @@
             <div class="row">
               <div class="col-md-12">
                 <div class="form-group">
-                  <label for="exampleInputPassword">Password</label>
+                  <label>Password</label>
                   <input
                     type="password"
                     class="form-control"
                     placeholder="Password"
-                    name="user.password"
-                    [(ngModel)]="user.password"
+                    formControlName="password"
                   />
                   <span *ngIf="message.password"
                     ><p

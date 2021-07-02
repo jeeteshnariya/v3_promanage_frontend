@@ -1,7 +1,9 @@
 import { Component, Input, OnInit } from "@angular/core";
-import { NgbActiveModal, NgbDateStruct } from "@ng-bootstrap/ng-bootstrap";
+import { FormBuilder, FormGroup } from "@angular/forms";
 
-const states = ["Open", "Active", "Pending", "Completed", "Archive"];
+import { NgbActiveModal } from "@ng-bootstrap/ng-bootstrap";
+import { ProjectsService } from "app/_services/projects.service";
+
 @Component({
   selector: "app-modal-project",
   templateUrl: "./modal-project.component.html",
@@ -10,17 +12,47 @@ const states = ["Open", "Active", "Pending", "Completed", "Archive"];
 export class ModalProjectComponent implements OnInit {
   @Input() data;
   public mode: any = null;
-  public project: any = null;
-  duedate: NgbDateStruct;
+  public projectForm: FormGroup;
 
-  constructor(public activeModal: NgbActiveModal) {}
+  constructor(
+    public activeModal: NgbActiveModal,
+    private fb: FormBuilder,
+    private projectService: ProjectsService
+  ) {}
 
   ngOnInit(): void {
     this.mode = this.data.mode;
-    this.project = this.data.project;
+    this.initForm();
+    this.projectForm.patchValue(this.data.project);
+  }
+
+  initForm(): void {
+    this.projectForm = this.fb.group({
+      id: "",
+      name: "PRoject Name",
+      start_date: "",
+      due_date: "",
+      description: "",
+      status: "Completed",
+      users: this.fb.group({
+        name: "username",
+        email: "user@rmail.com",
+      }),
+    });
   }
 
   saveProject() {
-    this.activeModal.close("Ok click");
+    console.log(this.projectForm.value);
+    var id = this.data.project.id;
+    this.projectService.updateProject(id, this.projectForm.value).subscribe(
+      (resp: any) => {
+        console.log(resp);
+        this.projectService.displayMsg(resp.message);
+        this.activeModal.close("Ok click");
+      },
+      (err) => {
+        console.error("Error logging in", err);
+      }
+    );
   }
 }
