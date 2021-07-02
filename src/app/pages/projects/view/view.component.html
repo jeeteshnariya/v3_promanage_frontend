@@ -1,0 +1,209 @@
+<div class="container">
+  <div class="row">
+    <div class="card card-user">
+      <div class="card-body">
+        <div class="row">
+          <div class="col-md-1">
+            <img
+              src="assets/img/welcomhotel-dwarka.png"
+              class="proimg mt-2 ml-4"
+            />
+          </div>
+          <div class="col-md-11 mt-3">
+            <h3 class="font-weight-bold">Hotel Management System</h3>
+          </div>
+          <div class="col-md-10 offset-1">
+            <button type="button" class="btn Complete btn-sm mr-3">
+              Complete
+            </button>
+            <code
+              >Under Guidence:
+              <small class="text-muted">Mr.S.D.Parekh</small> &nbsp; 
+              Student:
+              <small class="text-muted">Mr.S.D.Parekh</small> &nbsp;Created
+              Date:<small class="text-muted">14/03/2021</small></code
+            >
+          </div>
+        </div>
+        <div class="card-footer">
+          <hr />
+          <p class="ml-4 mt-2 text-primary">#LARAVEL #MYSQL</p>
+        </div>
+      </div>
+      <div class="col-md-10 offset-1">
+        <nav ngbNav #nav="ngbNav" class="nav-tabs">
+          <ng-container ngbNavItem>
+            <a ngbNavLink>Tasks</a>
+            <ng-template ngbNavContent>
+              <div class="mt-3 col-10 offset-1">
+                <h6 class="m-0 font-weight-bold text-primary">Tasks</h6>
+                <div class="table-responsive">
+                  <table
+                    class="table table-hover"
+                    id="dataTable"
+                    width="100%"
+                    cellspacing="0"
+                  >
+                    <thead>
+                      <tr>
+                        <th>Title</th>
+                        <th>Priority</th>
+                        <th>Status</th>
+                        <th>Due Date</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let card of [1, 2, 3, 4]">
+                        <td scope="row">Task1</td>
+                        <td>Urgent</td>
+                        <td>Deadline</td>
+                        <td>16/5/2021</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <div class="mt-5 col">
+                <div class="row">
+                  <h5 class="mb-4 text-gray-800">Add New Task</h5>
+                  <hr />
+                </div>
+                <form>
+                  <div class="form-row">
+                    <div class="form-group col-2">
+                      <label for="newtask">New Task</label>
+                      <input
+                        type="newtask"
+                        class="form-control"
+                        name="newtask"
+                        id="newtask"
+                      />
+                    </div>
+                    <div class="form-group col-3">
+                      <label for="description">Description</label>
+                      <textarea
+                        class="form-control rounded-0"
+                        id="description"
+                        name="description"
+                        type="text"
+                        rows="1"
+                      ></textarea>
+                    </div>
+                    <div class="form-group col-3">
+                      <label for="priority">Priority</label>
+                      <select
+                        id="priority"
+                        name="priority"
+                        class="form-control"
+                      >
+                        <option selected>Urgent</option>
+                        <option>High</option>
+                        <option>Medium</option>
+                        <option>Low</option>
+                      </select>
+                    </div>
+                    <div class="form-group col-2">
+                      <label for="status">Status</label>
+                      <select id="status" name="status" class="form-control">
+                        <option selected>Choose...</option>
+                        <option>...</option>
+                      </select>
+                    </div>
+                    <div class="form-group col-md-2">
+                      <button type="submit" class="btn btn-outline-primary">
+                        Save
+                      </button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </ng-template>
+          </ng-container>
+          <ng-container ngbNavItem>
+            <a ngbNavLink>Files</a>
+            <ng-template ngbNavContent>
+              <div class="mt-3 col-md-8 offset-2">
+               
+                  <h6 class="m-0 font-weight-bold text-primary">Files</h6>
+                
+                
+                  <div class="table-responsive">
+                    <table
+                      class="table table-hover"
+                      id="dataTable"
+                      width="100%"
+                      cellspacing="0"
+                    >
+                      <thead>
+                        <tr>
+                          <th>File</th>
+                          <th>Type</th>
+                          <th>Size</th>
+                          <th></th>
+                        </tr>
+                      </thead>
+                      <tfoot>
+                        <th>File</th>
+                        <th>Type</th>
+                        <th>Size</th>
+                        <th></th>
+                      </tfoot>
+                      <tbody>
+                        <tr *ngFor="let card of [1, 2, 3, 4]">
+                          <td scope="row">File1</td>
+                          <td>Zip</td>
+                          <td>2mb</td>
+                          <td>
+                            <button
+                              type="button"
+                              class="btn btn-outline-primary"
+                            >
+                              Download
+                            </button>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                
+              </div>
+              <div class="mt-5 col-10 offset-1">
+                <div class="row">
+                  <h5 class="mb-4 text-gray-800">Upload Project</h5>
+                  <hr />
+                </div>
+                <form>
+                  <div class="form-row">
+                    <div class="form-group col-md-4">
+                      <label>Upload Files</label>
+                      <div class="custom-file">
+                        <input
+                          type="file"
+                          class="custom-file-input"
+                          name="upfile"
+                          id="upfile"
+                        />
+                        <label
+                          class="custom-file-label"
+                          for="avtar"
+                          aria-describedby="inputGroupFileAddon02"
+                          >Choose File</label
+                        >
+                      </div>
+                    </div>
+                    <div class="form-group col-md-2">
+                      <button type="submit" class="btn btn-outline-primary">
+                        Upload
+                      </button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </ng-template>
+          </ng-container>          
+        </nav>
+        <div [ngbNavOutlet]="nav" class="mt-2"></div>
+      </div>
+    </div>
+  </div>
+</div>

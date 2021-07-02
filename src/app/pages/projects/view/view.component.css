@@ -1,0 +1,14 @@
+.proimg {
+  height: 60px;
+  width: 7000px;
+  border-radius: 50%;
+}
+.Complete {
+  background-color: #9dfa78cc;
+}
+
+.inprogress {
+  background-color: rgba(231, 125, 116, 0.822);
+  color: rgb(246, 47, 33);
+  border-color: rgb(246, 33, 33);
+}
