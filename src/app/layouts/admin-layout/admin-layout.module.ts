@@ -17,7 +17,6 @@ import { ProjectsComponent } from "../../pages/projects/projects.component";
 import { LoginComponent } from "app/pages/login/login.component";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { ProjectoverviewComponent } from "../../pages/projectoverview/projectoverview.component";
-import { AngularFileUploaderModule } from "angular-file-uploader";
 
 @NgModule({
   imports: [
@@ -26,7 +25,6 @@ import { AngularFileUploaderModule } from "angular-file-uploader";
     NgbModule,
     FormsModule,
     ReactiveFormsModule,
-    AngularFileUploaderModule,
   ],
   declarations: [
     DashboardComponent,

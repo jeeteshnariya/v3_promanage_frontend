@@ -21,8 +21,6 @@ export class ProjectoverviewComponent implements OnInit {
 
   private taskForm: FormGroup;
 
-  public afuConfig: any = null;
-
   constructor(
     private route: ActivatedRoute,
     private router: Router,
@@ -43,7 +41,6 @@ export class ProjectoverviewComponent implements OnInit {
       this.fetchUserById();
       this.fetchTaskOfProject();
     }
-    this.afuConfig = this.fileService.afuConfig;
   }
 
   fetchUserById() {
