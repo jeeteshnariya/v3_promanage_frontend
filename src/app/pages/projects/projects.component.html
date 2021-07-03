@@ -2,7 +2,11 @@
   <div class="row">
     <div class="col-md-12 mb-2">
       <nav class="pull-left">
-        <button class="btn" (click)="open({ mode: 'add', project: {} })">
+        <button
+          class="btn"
+          (click)="open({ mode: 'add', project: {} })"
+          *ngIf="roleDisplay()"
+        >
           Add +
         </button>
       </nav>

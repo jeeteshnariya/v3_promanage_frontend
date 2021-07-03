@@ -50,6 +50,10 @@ export class AuthService {
     var user = JSON.parse(localStorage.getItem("user"));
     return user;
   }
+  get role() {
+    var user = JSON.parse(localStorage.getItem("user"));
+    return user.roles.slug;
+  }
 
   isLoggedIn() {
     // return this.token != null;

@@ -1,5 +1,6 @@
 import { Component, OnInit, Type } from "@angular/core";
 import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
+import { AuthService } from "app/_services/auth.service";
 import { ProjectsService } from "app/_services/projects.service";
 import { TosterService } from "app/_services/toster.service";
 import * as moment from "moment";
@@ -17,7 +18,8 @@ export class ProjectsComponent implements OnInit {
   constructor(
     private projectService: ProjectsService,
     private modalService: NgbModal,
-    private tost: TosterService
+    private tost: TosterService,
+    private authSvc: AuthService
   ) {}
 
   public projects: any = null;
@@ -26,6 +28,10 @@ export class ProjectsComponent implements OnInit {
 
   ngOnInit(): void {
     this.fetchProjects();
+  }
+
+  roleDisplay() {
+    return this.authSvc.role == "student";
   }
 
   fetchProjects() {

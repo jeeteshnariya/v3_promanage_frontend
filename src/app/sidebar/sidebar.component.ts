@@ -48,4 +48,21 @@ export class SidebarComponent implements OnInit {
       }
     );
   }
+
+  roledisplay(item) {
+    const admin = ["/dashboard", "/profiles", "/user", "/projects"];
+    const faculty = ["/dashboard", "/profiles", "/user", "/projects"];
+    const studnet = ["/dashboard", "/projects"];
+    const role = this.authService.role;
+    if (role == "student") {
+      return studnet.includes(item); // Returns true
+    }
+    if (role == "faculty") {
+      return faculty.includes(item); // Returns true
+    }
+    if (role == "admin") {
+      return admin.includes(item); // Returns true
+    }
+    return false;
+  }
 }
