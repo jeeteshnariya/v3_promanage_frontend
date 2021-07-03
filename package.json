@@ -36,6 +36,7 @@
     "jquery": "3.5.1",
     "moment": "2.29.1",
     "ngx-toastr": "13.1.0",
+    "ngx-uploader": "^11.0.0",
     "rxjs": "6.6.3",
     "tslib": "2.0.2",
     "zone.js": "0.11.1"

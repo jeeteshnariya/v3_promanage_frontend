@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, EventEmitter, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup } from "@angular/forms";
 import { ActivatedRoute, Router } from "@angular/router";
 import { FilesService } from "app/_services/files.service";
@@ -6,7 +6,14 @@ import { ProjectsService } from "app/_services/projects.service";
 import { TasksService } from "app/_services/tasks.service";
 import { TosterService } from "app/_services/toster.service";
 import * as moment from "moment";
-
+import {
+  UploadOutput,
+  UploadInput,
+  UploadFile,
+  humanizeBytes,
+  UploaderOptions,
+  UploadStatus,
+} from "ngx-uploader";
 @Component({
   selector: "app-projectoverview",
   templateUrl: "./projectoverview.component.html",
@@ -21,6 +28,17 @@ export class ProjectoverviewComponent implements OnInit {
 
   private taskForm: FormGroup;
 
+  /**file uploder */
+  url = "/api/uploads";
+  formData: FormData;
+  files: UploadFile[];
+  uploadInput: EventEmitter<UploadInput>;
+  humanizeBytes: Function;
+  dragOver: boolean;
+  options: UploaderOptions;
+  authHeader;
+  /*file uploder end*/
+
   constructor(
     private route: ActivatedRoute,
     private router: Router,
@@ -29,7 +47,20 @@ export class ProjectoverviewComponent implements OnInit {
     private tost: TosterService,
     private taskService: TasksService,
     private fileService: FilesService
-  ) {}
+  ) {
+    this.authHeader = {
+      Authorization: `Bearer ${localStorage.getItem("token")}`,
+    };
+
+    this.options = {
+      concurrency: 1,
+      maxUploads: 10,
+      maxFileSize: 1000000,
+    };
+    this.files = [];
+    this.uploadInput = new EventEmitter<UploadInput>();
+    this.humanizeBytes = humanizeBytes;
+  }
   moment = moment;
   ngOnInit() {
     this.initForm();
@@ -121,7 +152,75 @@ export class ProjectoverviewComponent implements OnInit {
     );
   }
 
-  fileUpload(e) {
-    console.log(e);
+  /* file upload start */
+  onUploadOutput(output: UploadOutput): void {
+    if (output.type === "allAddedToQueue") {
+      const event: UploadInput = {
+        type: "uploadAll",
+        url: this.url,
+        method: "POST",
+        data: { id: this.projectId },
+        headers: this.authHeader,
+      };
+
+      this.uploadInput.emit(event);
+    } else if (
+      output.type === "addedToQueue" &&
+      typeof output.file !== "undefined"
+    ) {
+      this.files.push(output.file);
+    } else if (
+      output.type === "uploading" &&
+      typeof output.file !== "undefined"
+    ) {
+      const index = this.files.findIndex(
+        (file) =>
+          typeof output.file !== "undefined" && file.id === output.file.id
+      );
+      this.files[index] = output.file;
+    } else if (output.type === "cancelled" || output.type === "removed") {
+      this.files = this.files.filter(
+        (file: UploadFile) => file !== output.file
+      );
+    } else if (output.type === "dragOver") {
+      this.dragOver = true;
+    } else if (output.type === "dragOut") {
+      this.dragOver = false;
+    } else if (output.type === "drop") {
+      this.dragOver = false;
+    } else if (
+      output.type === "rejected" &&
+      typeof output.file !== "undefined"
+    ) {
+      console.log(output.file.name + " rejected");
+    }
+
+    this.files = this.files.filter(
+      (file) => file.progress.status !== UploadStatus.Done
+    );
   }
+
+  startUpload(): void {
+    const event: UploadInput = {
+      type: "uploadAll",
+      url: this.url,
+      method: "POST",
+      data: { foo: "bar" },
+    };
+
+    this.uploadInput.emit(event);
+  }
+
+  cancelUpload(id: string): void {
+    this.uploadInput.emit({ type: "cancel", id: id });
+  }
+
+  removeFile(id: string): void {
+    this.uploadInput.emit({ type: "remove", id: id });
+  }
+
+  removeAllFiles(): void {
+    this.uploadInput.emit({ type: "removeAll" });
+  }
+  /* file upload end */
 }
