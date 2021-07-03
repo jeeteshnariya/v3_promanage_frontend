@@ -23,6 +23,7 @@ export class ProjectoverviewComponent implements OnInit {
   public projectId: string = null;
   public project: any = null;
   public tasks: any = null;
+  public filesData: any = null;
   active = 1;
   private taskId: number = null;
 
@@ -71,6 +72,7 @@ export class ProjectoverviewComponent implements OnInit {
     if (this.projectId) {
       this.fetchUserById();
       this.fetchTaskOfProject();
+      this.fetchFilesOfProject();
     }
   }
 
@@ -86,6 +88,17 @@ export class ProjectoverviewComponent implements OnInit {
       (res: any) => {
         // console.log(res);
         this.tasks = res.tasks;
+      },
+      (err: any) => {
+        console.log(err);
+      }
+    );
+  }
+  fetchFilesOfProject() {
+    this.fileService.geFilesByProjectId(this.projectId).subscribe(
+      (res: any) => {
+        // console.log(res);
+        this.filesData = res.files;
       },
       (err: any) => {
         console.log(err);
@@ -198,6 +211,7 @@ export class ProjectoverviewComponent implements OnInit {
     this.files = this.files.filter(
       (file) => file.progress.status !== UploadStatus.Done
     );
+    this.fetchFilesOfProject();
   }
 
   startUpload(): void {

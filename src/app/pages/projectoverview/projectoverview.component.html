@@ -156,30 +156,37 @@
               <a ngbNavLink>Files</a>
               <ng-template ngbNavContent>
                 <div class="table-responsive">
-                  <table class="table table-hover">
+                  <table class="table table-hover" id="dataTable">
                     <thead>
                       <tr>
-                        <th>File</th>
+                        <th>#</th>
+                        <th width="70%">Name</th>
                         <th>Type</th>
                         <th>Size</th>
-                        <th></th>
+                        <th>#</th>
                       </tr>
                     </thead>
-                    <tfoot>
-                      <th>File</th>
-                      <th>Type</th>
-                      <th>Size</th>
-                      <th></th>
-                    </tfoot>
                     <tbody>
-                      <tr *ngFor="let card of [1, 2, 3, 4]">
-                        <td scope="row">File1</td>
-                        <td>Zip</td>
-                        <td>2mb</td>
+                      <tr *ngFor="let file of filesData">
+                        <td>{{ file.id }}</td>
+                        <td scope="row">{{ file.name }}</td>
                         <td>
-                          <button type="button" class="btn btn-outline-primary">
+                          <span
+                            class="badge badge-pill ml-2"
+                            style="text-transform: uppercase"
+                            >{{ file.type }}</span
+                          >
+                        </td>
+                        <td>{{ file.size }} kb</td>
+                        <td>
+                          <a
+                            type="button"
+                            class="btn btn-outline-danger btn-sm"
+                            target="_blank"
+                            [href]="file.path"
+                          >
                             Download
-                          </button>
+                          </a>
                         </td>
                       </tr>
                     </tbody>
