@@ -2,28 +2,35 @@ import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { environment } from "environments/environment";
 import { Observable } from "rxjs";
+import { map } from "rxjs/internal/operators/map";
 
 @Injectable({
   providedIn: "root",
 })
 export class DashboardService {
   public _url: string = "";
-  public pieChartData: any = [];
-  barData: any;
+  public chartData: any = [0, 0, 0, 0];
 
   constructor(public http: HttpClient) {
     this._url = environment.baseUrl;
   }
 
   getDashboardData(): Observable<any[]> {
-    return this.http.get<any[]>(this._url + "/dashboard");
+    return this.http.get<any[]>(this._url + "/dashboard").pipe(
+      map((resp: any) => {
+        // this._token = resp.token;
+        // console.log(resp.data);
+        this.chartData = resp.data;
+        return resp;
+      })
+    );
   }
 
   get pieChart() {
     return {
       type: "pie",
       data: {
-        labels: [3, 2, 1, 0],
+        labels: [0, 0, 0, 0],
         datasets: [
           {
             label: "Tables Data",
@@ -31,7 +38,7 @@ export class DashboardService {
             pointHoverRadius: 0,
             backgroundColor: ["#e3e3e3", "#4acccd", "#fcc468", "#ef8157"],
             borderWidth: 0,
-            data: this.pieChartData,
+            data: this.chartData,
           },
         ],
       },
@@ -92,14 +99,14 @@ export class DashboardService {
           {
             type: "bar",
             label: "Bar Dataset",
-            data: this.barData,
+            data: this.chartData,
             borderColor: "rgb(255, 99, 132)",
             backgroundColor: "rgba(255, 99, 132, 0.2)",
           },
           {
             type: "line",
             label: "Line Dataset",
-            data: this.barData,
+            data: this.chartData,
             fill: false,
             borderColor: "rgb(54, 162, 235)",
           },

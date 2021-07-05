@@ -11,7 +11,7 @@
           <div class="col-7 col-md-8">
             <div class="numbers">
               <p class="card-category">Projects</p>
-              <p class="card-title">15</p>
+              <p class="card-title">{{ dash.projects }}</p>
               <p></p>
             </div>
           </div>
@@ -35,7 +35,7 @@
           <div class="col-7 col-md-8">
             <div class="numbers">
               <p class="card-category">Users</p>
-              <p class="card-title">120</p>
+              <p class="card-title">{{ dash.users }}</p>
               <p></p>
             </div>
           </div>
@@ -43,7 +43,7 @@
       </div>
       <div class="card-footer">
         <hr />
-        <div class="stats"><i class="fa fa-calendar-o"></i> Student (25)</div>
+        <div class="stats"><i class="fa fa-calendar-o"></i> Total Users</div>
       </div>
     </div>
   </div>
@@ -59,7 +59,7 @@
           <div class="col-7 col-md-8">
             <div class="numbers">
               <p class="card-category">Task</p>
-              <p class="card-title">23</p>
+              <p class="card-title">{{ dash.tasks }}</p>
               <p></p>
             </div>
           </div>
@@ -67,11 +67,13 @@
       </div>
       <div class="card-footer">
         <hr />
-        <div class="stats"><i class="fa fa-clock-o"></i>Completed(10)</div>
+        <div class="stats">
+          <i class="fa fa-clock-o"></i>Completed & Pending
+        </div>
       </div>
     </div>
   </div>
-  <div class="col-lg-3 col-md-6 col-sm-6">
+  <div class="col-lg-3 col-md-6 col-sm-6" *ngIf="authSvc.role != 'student'">
     <div class="card card-stats">
       <div class="card-body">
         <div class="row">
@@ -83,7 +85,7 @@
           <div class="col-7 col-md-8">
             <div class="numbers">
               <p class="card-category">Files</p>
-              <p class="card-title">25</p>
+              <p class="card-title">{{ dash.files }}</p>
               <p></p>
             </div>
           </div>
