@@ -14,8 +14,8 @@ export class ProjectsService {
     this._url = environment.baseUrl;
   }
 
-  getProjects(): Observable<any[]> {
-    return this.http.get<any[]>(this._url + "/projects");
+  getProjects(data = null): Observable<any[]> {
+    return this.http.get<any[]>(this._url + "/projects", { params: data });
   }
 
   getProject(id: any): Observable<any> {

@@ -30,12 +30,17 @@ export class ProjectsComponent implements OnInit {
     this.fetchProjects();
   }
 
+  serchData(val) {
+    let data = { search: val };
+    // console.log(val);
+    this.fetchProjects(data);
+  }
   roleDisplay() {
     return this.authSvc.role == "student";
   }
 
-  fetchProjects() {
-    this.projectService.getProjects().subscribe(
+  fetchProjects(data = null) {
+    this.projectService.getProjects(data).subscribe(
       (resp: any) => {
         console.log(resp);
         this.projects = resp.projects;

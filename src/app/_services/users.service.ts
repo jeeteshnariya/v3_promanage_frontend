@@ -14,8 +14,8 @@ export class UsersService {
     this._url = environment.baseUrl;
   }
 
-  getUsers(): Observable<any[]> {
-    return this.http.get<any[]>(this._url + "/users");
+  getUsers(data = null): Observable<any[]> {
+    return this.http.get<any[]>(this._url + "/users", { params: data });
   }
 
   getUser(id: string): Observable<any> {

@@ -16,8 +16,14 @@ export class ProfilesComponent implements OnInit {
     this.fetchUsers();
   }
 
-  fetchUsers() {
-    this.userService.getUsers().subscribe(
+  serchData(val) {
+    let data = { search: val };
+    // console.log(val);
+    this.fetchUsers(data);
+  }
+
+  fetchUsers(data = null) {
+    this.userService.getUsers(data).subscribe(
       (resp: any) => {
         console.log("Successfully logged in");
         // console.log(resp.users);
