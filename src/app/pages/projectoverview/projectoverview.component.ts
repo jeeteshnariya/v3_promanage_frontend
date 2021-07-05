@@ -1,6 +1,7 @@
 import { Component, EventEmitter, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup } from "@angular/forms";
 import { ActivatedRoute, Router } from "@angular/router";
+import { AuthService } from "app/_services/auth.service";
 import { FilesService } from "app/_services/files.service";
 import { ProjectsService } from "app/_services/projects.service";
 import { TasksService } from "app/_services/tasks.service";
@@ -47,7 +48,8 @@ export class ProjectoverviewComponent implements OnInit {
     private fb: FormBuilder,
     private tost: TosterService,
     private taskService: TasksService,
-    private fileService: FilesService
+    private fileService: FilesService,
+    public authSvc: AuthService
   ) {
     this.authHeader = {
       Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -113,6 +115,7 @@ export class ProjectoverviewComponent implements OnInit {
       this.initForm();
     });
   }
+ 
   initForm() {
     this.taskForm = this.fb.group({
       title: "",
@@ -120,6 +123,12 @@ export class ProjectoverviewComponent implements OnInit {
       priority: "Low",
     });
     this.taskId = null;
+  }
+
+  statusChange(task){   
+    this.taskForm.patchValue(task);
+    this.taskForm.controls.status.setValue("Completed");
+    this.updateTask(task.id);    
   }
 
   setTask(task) {

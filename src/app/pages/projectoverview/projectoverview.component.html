@@ -69,7 +69,7 @@
                         <th width="70%">Title</th>
                         <th>Priority</th>
                         <th>Status</th>
-                        <th>#</th>
+                        <th  *ngIf="authSvc.role!='student'">#</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -80,16 +80,17 @@
                           <span
                             class="badge badge-pill ml-2"
                             style="text-transform: uppercase"
-                            [class]="task.priority"
+                            [class]="task.priority"                            
                             >{{ task.priority }}</span
                           >
                         </td>
-                        <td>{{ task.status }}</td>
+                        <td (click)="statusChange(task)">{{ task.status }}</td>
                         <td>
                           <button
                             type="button"
                             class="btn btn-outline-danger btn-sm"
                             (click)="removeTask(task.id)"
+                            *ngIf="authSvc.role!='student'"
                           >
                             X
                           </button>
@@ -99,7 +100,7 @@
                   </table>
                 </div>
 
-                <form class="row" [formGroup]="taskForm">
+                <form class="row" [formGroup]="taskForm" *ngIf="authSvc.role!='student'">
                   <div class="col-md-12">
                     <div class="form-row">
                       <div class="form-group col-6">
